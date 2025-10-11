@@ -5,11 +5,12 @@ from src.db.session import init_db
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
+GUILD_ID = os.getenv("GUILD_ID") 
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix=None, intents=intents)
 
 EXTENSIONS = [
     "src.cogs.player",
@@ -22,7 +23,20 @@ EXTENSIONS = [
 
 @bot.event
 async def on_ready():
-    print(f"ENCENDIDO {bot.user}")
+    who = f"{bot.user} ({bot.user.id})"
+    print(f"ENCENDIDO {who}")
+    # Sync de comandos
+    try:
+        if GUILD_ID:
+            guild = discord.Object(id=int(GUILD_ID))
+            bot.tree.copy_global_to(guild=guild)
+            synced = await bot.tree.sync(guild=guild)
+            print(f"Slash sincronizados en guild {GUILD_ID}: {len(synced)}")
+        else:
+            synced = await bot.tree.sync()
+            print(f"Slash globales sincronizados: {len(synced)} (pueden tardar unos minutos en verse)")
+    except Exception as e:
+        print("Error sync:", e)
 
 async def main():
     init_db()

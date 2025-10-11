@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy import String, Integer, ForeignKey, Boolean, DateTime, func
 
@@ -35,7 +36,10 @@ class InventoryItem(Base):
     player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"))
     character_id: Mapped[str] = mapped_column(String)
     copies: Mapped[int] = mapped_column(Integer, default=1)
-    obtained_at: Mapped["DateTime"] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    obtained_at: Mapped["DateTime"] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc)
+    )
 
 class PullHistory(Base):
     __tablename__ = "pull_history"
@@ -44,4 +48,8 @@ class PullHistory(Base):
     banner_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
     rarity: Mapped[int] = mapped_column(Integer, nullable=False)
     character_id: Mapped[str] = mapped_column(String, nullable=False)
-    ts: Mapped["DateTime"] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+    ts: Mapped["DateTime"] = mapped_column(
+        DateTime(timezone=True),
+        index=True,
+        default=lambda: datetime.now(timezone.utc)
+    )

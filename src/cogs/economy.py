@@ -1,40 +1,40 @@
+import discord
+from discord import app_commands
 from discord.ext import commands
 from datetime import datetime, timedelta, timezone
 from ..db.session import SessionLocal
-from ..db.models import Player, Currency  # <-- importá Currency
+from ..db.models import Player, Currency 
 
 DAILY_TICKETS = 2
 COOLDOWN = timedelta(hours=24)
 
 def to_utc_aware(dt: datetime | None) -> datetime | None:
+    #Normaliza a UTC. Si viene naive, ASUMIMOS que es UTC.
     if dt is None:
         return None
-    # Si vino naive (sin tz) asumimos que estaba guardado en UTC
     if dt.tzinfo is None:
         return dt.replace(tzinfo=timezone.utc)
-    # Normalizamos a UTC
     return dt.astimezone(timezone.utc)
 
 class EconomyCog(commands.Cog):
-    def __init__(self, bot): 
-        self.bot = bot
+    def __init__(self, bot): self.bot = bot
 
-    @commands.command(name="daily")
-    async def daily(self, ctx):
+    @app_commands.command(name="daily", description="Reclamá tus tickets diarios.")
+    async def daily(self, interaction: discord.Interaction):
         now = datetime.now(timezone.utc)
         with SessionLocal() as db:
-            p = db.get(Player, str(ctx.author.id))
+            p = db.get(Player, str(interaction.user.id))
             if not p:
-                return await ctx.reply("Usá !register primero.")
+                return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
 
             last = to_utc_aware(p.last_daily_at)
             if last is not None:
-                delta = now - last  # <- ahora nunca rompe
+                delta = now - last 
                 if delta < COOLDOWN:
                     restante = COOLDOWN - delta
                     h = int(restante.total_seconds() // 3600)
                     m = int((restante.total_seconds() % 3600) // 60)
-                    return await ctx.reply(f"Aún no pasaron 24h. Te faltan ~{h}h {m}m.")
+                    return await interaction.response.send_message(f"Aún no pasaron 24h. Te faltan ~{h}h {m}m.", ephemeral=True)
 
             # Asegurar que exista currencies
             if p.currencies is None:
@@ -45,31 +45,29 @@ class EconomyCog(commands.Cog):
             db.commit()
 
             # Responder dentro del contexto para evitar DetachedInstanceError
-            return await ctx.reply(
-                f"¡Reclamaste {DAILY_TICKETS} tickets! Ahora tenés {p.currencies.tickets}."
-            )
+            await interaction.response.send_message(f"¡Reclamaste {DAILY_TICKETS} tickets!", ephemeral=True)
 
-    @commands.command(name="add100")
-    async def add100(self, ctx):
+    @app_commands.command(name="add100", description="Agrega 100 tickets a tu cuenta.")
+    async def add100(self, interaction: discord.Interaction):
         with SessionLocal() as db:
-            p = db.get(Player, str(ctx.author.id))
+            p = db.get(Player, str(interaction.user.id))
             if not p:
-                return await ctx.reply("Usá !register primero.")
+                return await interaction.response.send_message("Usá !register primero.", ephemeral=True)
             if p.currencies is None:
                 p.currencies = Currency(tickets=0, credits=0)
             p.currencies.tickets += 100
             db.commit()
-            return await ctx.reply(f"¡Te di 100 tickets! Ahora tenés {p.currencies.tickets}.")
+            return await interaction.response.send_message(f"¡Te di 100 tickets! Ahora tenés {p.currencies.tickets}.", ephemeral=True)
 
-    @commands.command(name="balance")
-    async def balance(self, ctx):
+    @app_commands.command(name="balance", description="Tu balance actual.")
+    async def balance(self, interaction: discord.Interaction):
         with SessionLocal() as db:
-            p = db.get(Player, str(ctx.author.id))
+            p = db.get(Player, str(interaction.user.id))
             if not p:
-                return await ctx.reply("Usá !register primero.")
-            if p.currencies is None:
-                return await ctx.reply("Sin billetera aún. Usá `!daily` primero.")
-            return await ctx.reply(f"Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}")
+                return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
+            #if p.currencies is None:
+            #    return await interaction.reply("Sin billetera aún. Usá `!daily` primero.")
+            return await interaction.response.send_message(f"Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}", ephemeral=True)
         
     # Handler error
     @commands.Cog.listener()

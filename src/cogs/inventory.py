@@ -1,28 +1,24 @@
+import discord
+from discord import app_commands
 from discord.ext import commands
+from sqlalchemy import select, func
 from ..db.session import SessionLocal
 from ..db.models import Player, InventoryItem
-from sqlalchemy import select, func
+from .gacha import GS  # para leer metadata de personajes
 
 class InventoryCog(commands.Cog):
     def __init__(self, bot): self.bot = bot
 
-    @commands.command(name="inventory")
-    async def inventory(self, ctx, member_mention: str = None):
-        """Muestra tu inventario o el de otro usuario (mención opcional)."""
-        target_id = None
-        if member_mention and member_mention.startswith("<@") and member_mention.endswith(">"):
-            # admite <@123> y <@!123>
-            target_id = member_mention.strip("<@!>")
-        else:
-            target_id = str(ctx.author.id)
-
+    @app_commands.command(name="inventory", description="Muestra tu inventario o el de otro usuario.")
+    @app_commands.describe(user="Usuario (opcional) para ver su inventario")
+    async def inventory(self, interaction: discord.Interaction, user: discord.User | None = None):
+        target_id = str((user or interaction.user).id)
         with SessionLocal() as db:
             p = db.get(Player, target_id)
             if not p:
-                return await ctx.reply("Ese usuario no está registrado." if target_id != str(ctx.author.id)
-                                       else "Usá !register primero.")
+                msg = "Ese usuario no está registrado." if user else "Usá /register primero."
+                return await interaction.response.send_message(msg, ephemeral=True)
 
-            # Traer items y agrupar por rareza y nombre (opcionalmente podrías join con characters.json en memoria)
             items = db.execute(
                 select(InventoryItem.character_id, func.sum(InventoryItem.copies))
                 .where(InventoryItem.player_id == p.user_id)
@@ -30,12 +26,8 @@ class InventoryCog(commands.Cog):
             ).all()
 
         if not items:
-            return await ctx.reply("Inventario vacío.")
+            return await interaction.response.send_message("Inventario vacío.", ephemeral=True)
 
-        # Para mostrar rareza, necesitás mirar el JSON en memoria. Reutilizamos el loader del cog gacha:
-        from ..cogs.gacha import GS  # tiene GS.characters ya cargado
-
-        # ordenar por rareza DESC y luego nombre
         def sort_key(row):
             cid, copies = row
             ch = GS.characters.get(cid)
@@ -52,16 +44,18 @@ class InventoryCog(commands.Cog):
             else:
                 lines.append(f"?? **{cid}** ×{copies}")
 
-        # Discord limita 2000 chars, segmentamos si fuera necesario
-        chunk = []
-        total_len = 0
+        # arma respuesta cuidando límite
+        chunks, buf = [], ""
         for line in lines:
-            if total_len + len(line) + 1 > 1900:
-                await ctx.reply("\n".join(chunk))
-                chunk = [line]; total_len = len(line) + 1
+            if len(buf) + len(line) + 1 > 1900:
+                chunks.append(buf); buf = line + "\n"
             else:
-                chunk.append(line); total_len += len(line) + 1
-        if chunk:
-            await ctx.reply("\n".join(chunk))
+                buf += line + "\n"
+        if buf: chunks.append(buf)
+
+        # primera parte: pública; resto, followups
+        await interaction.response.send_message(chunks[0])
+        for extra in chunks[1:]:
+            await interaction.followup.send(extra)
 
 async def setup(bot): await bot.add_cog(InventoryCog(bot))

@@ -1,3 +1,5 @@
+import discord
+from discord import app_commands
 from discord.ext import commands
 from ..db.session import SessionLocal
 from ..db.models import Player, Currency, GachaState
@@ -7,25 +9,28 @@ WELCOME_TICKETS = 10
 class PlayerCog(commands.Cog):
     def __init__(self, bot): self.bot = bot
 
-    @commands.command(name="register")
-    async def register(self, ctx):
+    @app_commands.command(name="register", description="Crea tu perfil.")
+    async def register(self, interaction: discord.Interaction):
         with SessionLocal() as db:
-            uid = str(ctx.author.id)
+            uid = str(interaction.user.id)
             if db.get(Player, uid):
-                return await ctx.reply("Ya estás registrado.")
-            p = Player(user_id=uid, name=ctx.author.display_name)
+                return await interaction.response.send_message("Ya estás registrado.", ephemeral=True)
+            p = Player(user_id=uid, name=interaction.user.display_name)
             db.add(p)
             db.add(Currency(player=p, tickets=WELCOME_TICKETS, credits=1000))
             db.add(GachaState(player=p))
             db.commit()
-        await ctx.reply(f"¡Perfil creado! Tenés {WELCOME_TICKETS} tickets de bienvenida.")
+        await interaction.response.send_message(f"¡Perfil creado! Tenés {WELCOME_TICKETS} tickets.", ephemeral=True)
 
-    @commands.command(name="profile")
-    async def profile(self, ctx):
+    @app_commands.command(name="profile", description="Muestra tu perfil.")
+    async def profile(self, interaction: discord.Interaction):
         with SessionLocal() as db:
-            p = db.get(Player, str(ctx.author.id))
-            if not p: return await ctx.reply("Usá !register primero.")
-            await ctx.reply(f"Jugador: **{p.name}** — Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}")
-        
+            p = db.get(Player, str(interaction.user.id))
+            if not p:
+                return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
+            await interaction.response.send_message(
+                f"Jugador: **{p.name}** — Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}",
+                ephemeral=True
+            )   
         
 async def setup(bot): await bot.add_cog(PlayerCog(bot))
