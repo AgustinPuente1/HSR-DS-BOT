@@ -1,0 +1,41 @@
+{
+    "version":1,
+    "characters":[
+        {
+            "id":"dan_heng",
+            "name":"Dan Heng",
+            "rarity":4,
+            "path":"Hunt",
+            "element":"Wind",
+            "image":"data/images/characters/dan_heng.png",
+            "tags":["single_target", "dps"]
+        },
+        {  
+            "id":"march_7th",
+            "name":"March 7th",
+            "rarity":4,
+            "path":"Preservation",
+            "element":"Ice",
+            "image":"data/images/characters/march_7th.png",
+            "tags":["shield","sustain"]
+        },
+        {
+            "id":"bronya",
+            "name":"Bronya",
+            "rarity":5,
+            "path":"Harmony",
+            "element":"Wind",
+            "image":"data/images/characters/bronya.png",
+            "tags":["amplifier","support"]
+        },
+        {
+            "id":"seele",
+            "name":"Seele",
+            "rarity":5,
+            "path":"Hunt",
+            "element":"Quantum",
+            "image":"data/images/characters/seele.png",
+            "tags":["single_tanget","dps"]
+        }
+    ]
+}

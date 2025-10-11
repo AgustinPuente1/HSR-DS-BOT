@@ -1,0 +1,38 @@
+{
+    "version":1,
+    "banners": [
+        {
+            "id":"stellar_warp",
+            "name": "Stellar Warp",
+            "key":"star_rail_pass",
+            "pool":{
+                "five_star_c":["bronya"],
+                "four_star_c":["march_7th","dan_heng"],
+                "five_star_l": ["time_waits_for_no_one"],
+                "four_star_l": ["woof_walk_time"],
+                "three_star_l": ["sagacity"]
+            },
+            "rates": {
+                "base": { "5": 0.006, "4": 0.051, "3": 0.943 },
+                "hard_pity": { "five_at": 90, "four_at": 10 },
+                "soft_pity": { "start_5": 74, "inc_5": 0.06, "start_4": 8, "inc_4": 0.10 }
+            }
+        },
+        {
+            "id":"event_warp_1_seele",                
+            "name": "Character Event Warp - Seele",
+            "key":"star_rail_special_pass",
+            "pool":{
+                "five_star_c":["seele"],
+                "four_star_c":["march_7th","dan_heng"],
+                "four_star_l": ["woof_walk_time"],
+                "three_star_l": ["sagacity"]
+            },
+            "rates": {
+                "base": { "5": 0.006, "4": 0.051, "3": 0.943 },
+                "hard_pity": { "five_at": 90, "four_at": 10 },
+                "soft_pity": { "start_5": 74, "inc_5": 0.06, "start_4": 8, "inc_4": 0.10 }
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "version":1,
+    "light_cones":[
+        {
+            "id":"sagacity",
+            "name":"Sagacity",
+            "rarity":3,
+            "path":"Erudition",
+            "image":"data/images/light-cones/sagacity.png",
+            "hp":532, "atk":266, "def":190
+        },
+        {
+            "id":"wook_walk_time",
+            "name":"Woof! Walk Time!",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/wook_walk_time.png",
+            "hp":818, "atk":409, "def":284
+        },
+        {
+            "id":"time_waits_for_no_one",
+            "name":"Time Waits for No One",
+                "rarity":5,
+            "path":"Abundance",
+            "image":"data/images/light-cones/time_waits_for_no_one.png",
+            "hp":1270, "atk":476, "def":463
+        }
+    ]
+}
+
+
+
+		
