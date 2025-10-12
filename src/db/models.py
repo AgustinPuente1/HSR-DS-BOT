@@ -17,7 +17,8 @@ class Player(Base):
 class Currency(Base):
     __tablename__ = "currencies"
     player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"), primary_key=True)
-    tickets: Mapped[int] = mapped_column(Integer, default=0)
+    tickets_standard: Mapped[int] = mapped_column(Integer, default=0)  # Star Rail Pass
+    tickets_special:  Mapped[int] = mapped_column(Integer, default=0)  # Star Rail Special Pass
     credits: Mapped[int] = mapped_column(Integer, default=0)
     player: Mapped[Player] = relationship(back_populates="currencies")
 
@@ -34,7 +35,8 @@ class InventoryItem(Base):
     __tablename__ = "inventory"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"))
-    character_id: Mapped[str] = mapped_column(String)
+    item_id: Mapped[str] = mapped_column(String)         # id genérico (char o LC)
+    item_type: Mapped[str] = mapped_column(String)       # "character" | "light_cone"
     copies: Mapped[int] = mapped_column(Integer, default=1)
     obtained_at: Mapped["DateTime"] = mapped_column(
         DateTime(timezone=True),
@@ -47,7 +49,8 @@ class PullHistory(Base):
     player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"), index=True, nullable=False)
     banner_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
     rarity: Mapped[int] = mapped_column(Integer, nullable=False)
-    character_id: Mapped[str] = mapped_column(String, nullable=False)
+    item_id: Mapped[str] = mapped_column(String, nullable=False)
+    item_type: Mapped[str] = mapped_column(String, nullable=False)  # "character" | "light_cone"
     ts: Mapped["DateTime"] = mapped_column(
         DateTime(timezone=True),
         index=True,

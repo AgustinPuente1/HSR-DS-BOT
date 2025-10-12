@@ -4,7 +4,9 @@ from discord.ext import commands
 from sqlalchemy import select, func
 from ..db.session import SessionLocal
 from ..db.models import Player, InventoryItem
-from .gacha import GS  # para leer metadata de personajes
+from ..services.data_loader import load_data
+
+characters, light_cones, _banners = load_data()
 
 class InventoryCog(commands.Cog):
     def __init__(self, bot): self.bot = bot
@@ -20,40 +22,41 @@ class InventoryCog(commands.Cog):
                 return await interaction.response.send_message(msg, ephemeral=True)
 
             items = db.execute(
-                select(InventoryItem.character_id, func.sum(InventoryItem.copies))
+                select(InventoryItem.item_id, InventoryItem.item_type, func.sum(InventoryItem.copies))
                 .where(InventoryItem.player_id == p.user_id)
-                .group_by(InventoryItem.character_id)
+                .group_by(InventoryItem.item_id, InventoryItem.item_type)
             ).all()
 
-        if not items:
-            return await interaction.response.send_message("Inventario vacío.", ephemeral=True)
+        if not items: return await interaction.response.send_message("Inventario vacío.", ephemeral=True)
 
-        def sort_key(row):
-            cid, copies = row
-            ch = GS.characters.get(cid)
-            return (-ch.rarity if ch else 0, ch.name if ch else cid)
+        def to_meta(item_id, item_type):
+            if item_type == "character":
+                ch = next((x for x in characters.characters if x.id == item_id), None)
+                return (ch.rarity if ch else 0, ch.name if ch else item_id, "char")
+            lc = next((x for x in light_cones.light_cones if x.id == item_id), None)
+            return (lc.rarity if lc else 0, (lc.name) if lc else item_id, "lc")
 
-        items_sorted = sorted(items, key=sort_key)
+        # ordenar por rareza desc y nombre
+        sorted_items = sorted(
+            [(*to_meta(iid, itype), cnt, iid, itype) for iid, itype, cnt in items],
+            key=lambda x: (-x[0], x[1])
+        )
 
         lines = []
-        for cid, copies in items_sorted:
-            ch = GS.characters.get(cid)
-            if ch:
-                stars = "★" * ch.rarity
-                lines.append(f"{stars} **{ch.name}** ×{copies}")
-            else:
-                lines.append(f"?? **{cid}** ×{copies}")
+        for rarity, name, kind, cnt, iid, itype in sorted_items:
+            stars = "★"*rarity if rarity else ""
+            prefix = "[Character]" if kind=="char" else "[Light Cone]"
+            lines.append(f"{prefix}{stars} **{name}** ×{cnt}")
 
-        # arma respuesta cuidando límite
+        # enviar chunked
         chunks, buf = [], ""
         for line in lines:
             if len(buf) + len(line) + 1 > 1900:
-                chunks.append(buf); buf = line + "\n"
+                chunks.append(buf); buf = line+"\n"
             else:
-                buf += line + "\n"
+                buf += line+"\n"
         if buf: chunks.append(buf)
 
-        # primera parte: pública; resto, followups
         await interaction.response.send_message(chunks[0])
         for extra in chunks[1:]:
             await interaction.followup.send(extra)

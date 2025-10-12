@@ -2,7 +2,7 @@ from pydantic import BaseModel, field_validator
 from pathlib import Path
 import json
 
-BASE = Path(__file__).resolve().parents[2]  # carpeta raíz del proyecto
+BASE = Path(__file__).resolve().parents[2]
 
 class Character(BaseModel):
     id: str; name: str; rarity: int
@@ -16,6 +16,27 @@ class Character(BaseModel):
         if not p.exists():
             raise ValueError(f"Imagen no encontrada: {p}")
         return v
+
+class LightCone(BaseModel):
+    id: str; name: str; rarity: int
+    path: str; image: str
+    hp: int; atk: int; def_: int | None = None  # opcional def
+    # conservar campo "def" del json
+    @field_validator("image")
+    @classmethod
+    def image_exists(cls, v: str):
+        p = BASE / v
+        if not p.exists():
+            raise ValueError(f"Imagen no encontrada: {p}")
+        return v
+
+    @classmethod
+    def model_validate_json(cls, d: dict):
+        # mapear "def" → "def_"
+        d = dict(d)
+        if "def" in d and "def_" not in d:
+            d["def_"] = d.pop("def")
+        return cls(**d)
 
 class CharactersFile(BaseModel):
     version: int
@@ -43,6 +64,10 @@ class BannersFile(BaseModel):
     version: int
     banners: list[Banner]
 
+class LightConesFile(BaseModel):
+    version: int
+    light_cones: list[LightCone]
+
 def _load_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -51,15 +76,25 @@ def load_data():
     chars_raw = _load_json(BASE / "data/characters/characters.json")
     characters = CharactersFile(**chars_raw)
 
+    lcs_raw = _load_json(BASE / "data/light-cones/light-cones.json")
+    lcs_items = [LightCone.model_validate_json(x) for x in lcs_raw["light_cones"]]
+    light_cones = LightConesFile(version=lcs_raw["version"], light_cones=lcs_items)
+
     banners_raw = _load_json(BASE / "data/banners/banners.json")
     banners = BannersFile(**banners_raw)
 
-    # Chequeo de referencias: que IDs existan
+    # Chequeos de referencias
     char_ids = {c.id for c in characters.characters}
+    lc_ids   = {l.id for l in light_cones.light_cones}
+
     for b in banners.banners:
         for lst_name in ["five_star_c", "four_star_c"]:
             missing = [x for x in getattr(b.pool, lst_name) if x not in char_ids]
             if missing:
                 raise ValueError(f"IDs inexistentes en {b.id}/{lst_name}: {missing}")
+        for lst_name in ["five_star_l", "four_star_l", "three_star_l"]:
+            missing = [x for x in getattr(b.pool, lst_name) if x not in lc_ids]
+            if missing:
+                raise ValueError(f"IDs inexistentes en {b.id}/{lst_name}: {missing}")
 
-    return characters, banners
+    return characters, light_cones, banners

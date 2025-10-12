@@ -5,24 +5,39 @@ from datetime import datetime, timezone
 
 # ----------- GACHA -----------
 
-def make_pull_embed(results, characters):
-    embed = discord.Embed(title="Resultados", color=0x90cdf4)
-    files = []
-    first_img = None
+def make_pull_embed(results, characters, light_cones):
+    """
+    results: lista de (rarity:int, item:obj, item_type:str)
+    Devuelve: (embeds: list[discord.Embed], files: list[discord.File])
+    En pull10 -> 10 embeds (cada uno con su thumbnail).
+    En pull1  -> 1 embed.
+    """
+    embeds: list[discord.Embed] = []
+    files: list[File] = []
 
-    for rarity, char in results:
+    for idx, (rarity, item, item_type) in enumerate(results, start=1):
         stars = "★" * rarity
-        name = f"{stars} {char.name} ({char.rarity}★)"
-        embed.add_field(name=name, value=f"{char.path} • {char.element}", inline=False)
-        img = Path(char.image)
-        if img.exists():
-            files.append(File(img, filename=f"{char.id}.png"))
-            if first_img is None:
-                first_img = f"attachment://{char.id}.png"
+        if item_type == "character":
+            title = f"{stars} {item.name} ({item.rarity}★) — Character"
+            desc  = f"{item.path} • {item.element}"
+            img_path = Path(item.image)
+        else:
+            title = f"{stars} {item.name} ({item.rarity}★) — Light Cone"
+            desc  = f"{item.path}"
+            img_path = Path(item.image)
 
-    if first_img:
-        embed.set_thumbnail(url=first_img)
-    return embed, files
+        embed = discord.Embed(title=title, description=desc, color=0x90cdf4)
+        embed.set_footer(text=f"Resultado {idx}/{len(results)}")
+
+        # === CLAVE: nombre de archivo ÚNICO por resultado ===
+        if img_path.exists():
+            unique_fname = f"{idx}-{item.id}.png"   # <- evita colisiones en el mismo mensaje
+            files.append(File(img_path, filename=unique_fname))
+            embed.set_thumbnail(url=f"attachment://{unique_fname}")
+
+        embeds.append(embed)
+
+    return embeds, files
 
 # ---------- HISTORY ------------
 

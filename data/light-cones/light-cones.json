@@ -10,11 +10,11 @@
             "hp":532, "atk":266, "def":190
         },
         {
-            "id":"wook_walk_time",
+            "id":"woof_walk_time",
             "name":"Woof! Walk Time!",
             "rarity":4,
             "path":"Destruction",
-            "image":"data/images/light-cones/wook_walk_time.png",
+            "image":"data/images/light-cones/woof_walk_time.png",
             "hp":818, "atk":409, "def":284
         },
         {

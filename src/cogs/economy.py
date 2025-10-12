@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from ..db.session import SessionLocal
 from ..db.models import Player, Currency 
 
-DAILY_TICKETS = 2
+DAILY_TICKETS = 5
 COOLDOWN = timedelta(hours=24)
 
 def to_utc_aware(dt: datetime | None) -> datetime | None:
@@ -38,9 +38,10 @@ class EconomyCog(commands.Cog):
 
             # Asegurar que exista currencies
             if p.currencies is None:
-                p.currencies = Currency(tickets=0, credits=0)
+                p.currencies = Currency(tickets_standard=0,tickets_special=0 ,credits=0)
 
-            p.currencies.tickets += DAILY_TICKETS
+            p.currencies.tickets_standard += DAILY_TICKETS
+            p.currencies.tickets_special += DAILY_TICKETS
             p.last_daily_at = now
             db.commit()
 
@@ -55,9 +56,10 @@ class EconomyCog(commands.Cog):
                 return await interaction.response.send_message("Usá !register primero.", ephemeral=True)
             if p.currencies is None:
                 p.currencies = Currency(tickets=0, credits=0)
-            p.currencies.tickets += 100
+            p.currencies.tickets_standard += 100
+            p.currencies.tickets_special += 100
             db.commit()
-            return await interaction.response.send_message(f"¡Te di 100 tickets! Ahora tenés {p.currencies.tickets}.", ephemeral=True)
+            return await interaction.response.send_message(f"¡Te di 100 tickets! Ahora tenés {p.currencies.tickets_standard} tickets standard y {p.currencies.tickets_special} tickets especiales.", ephemeral=True)
 
     @app_commands.command(name="balance", description="Tu balance actual.")
     async def balance(self, interaction: discord.Interaction):
@@ -67,7 +69,7 @@ class EconomyCog(commands.Cog):
                 return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
             #if p.currencies is None:
             #    return await interaction.reply("Sin billetera aún. Usá `!daily` primero.")
-            return await interaction.response.send_message(f"Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}", ephemeral=True)
+            return await interaction.response.send_message(f"Tickets standard: {p.currencies.tickets_standard} — Tickets especiales: {p.currencies.tickets_special} — Créditos: {p.currencies.credits}", ephemeral=True)
         
     # Handler error
     @commands.Cog.listener()

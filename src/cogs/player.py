@@ -17,10 +17,10 @@ class PlayerCog(commands.Cog):
                 return await interaction.response.send_message("Ya estás registrado.", ephemeral=True)
             p = Player(user_id=uid, name=interaction.user.display_name)
             db.add(p)
-            db.add(Currency(player=p, tickets=WELCOME_TICKETS, credits=1000))
+            db.add(Currency(player=p, tickets_standard=WELCOME_TICKETS, tickets_special=WELCOME_TICKETS, credits=1000))
             db.add(GachaState(player=p))
             db.commit()
-        await interaction.response.send_message(f"¡Perfil creado! Tenés {WELCOME_TICKETS} tickets.", ephemeral=True)
+        await interaction.response.send_message(f"¡Perfil creado! Tenés {WELCOME_TICKETS} tickets standard y {WELCOME_TICKETS} tickets especiales.", ephemeral=True)
 
     @app_commands.command(name="profile", description="Muestra tu perfil.")
     async def profile(self, interaction: discord.Interaction):
@@ -29,7 +29,7 @@ class PlayerCog(commands.Cog):
             if not p:
                 return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
             await interaction.response.send_message(
-                f"Jugador: **{p.name}** — Tickets: {p.currencies.tickets} — Créditos: {p.currencies.credits}",
+                f"Jugador: **{p.name}** — Tickets standard: {p.currencies.tickets_standard} — Tickets especiales: {p.currencies.tickets_special} — Créditos: {p.currencies.credits}",
                 ephemeral=True
             )   
         
