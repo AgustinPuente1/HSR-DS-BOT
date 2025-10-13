@@ -6,45 +6,11 @@ from ..services.data_loader import load_data
 from ..services.gacha_service import GachaService
 from ..util.embeds import make_pull_embed
 from ..db.models import Player, GachaState, InventoryItem, PullHistory
+from ..util.banner_select import BannerSelectView
 from datetime import datetime, timezone
 
 characters, light_cones, banners = load_data()
 GS = GachaService(characters, light_cones, banners)
-
-# -------- View y Select para elegir banner --------
-class BannerSelect(discord.ui.Select):
-    def __init__(self, user_id: str):
-        self.user_id = user_id
-        options = []
-        for bid, b in list(GS.banners.items())[:25]:
-            label = b.name[:100]
-            description = f"ID: {bid} • {('PASS' if b.key=='star_rail_pass' else 'SPECIAL')}"
-            options.append(discord.SelectOption(label=label, value=bid, description=description))
-        super().__init__(placeholder="Elegí tu banner…", min_values=1, max_values=1,
-                         options=options, custom_id="banner_select")
-
-    async def callback(self, interaction: discord.Interaction):
-        if str(interaction.user.id) != self.user_id:
-            return await interaction.response.send_message("No podés cambiar el banner de otra persona.", ephemeral=True)
-
-        chosen = self.values[0]
-        with SessionLocal() as db:
-            gs = db.get(GachaState, self.user_id)
-            if not gs:
-                return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
-            gs.banner_id = chosen
-            db.commit()
-
-        b = GS.banners[chosen]
-        kind = "Star Rail Pass" if b.key == "star_rail_pass" else "Star Rail Special Pass"
-        await interaction.response.edit_message(content=f"Banner activo: **{b.name}** *(ID: `{chosen}`)* — Requiere **{kind}**", view=None)
-
-class BannerSelectView(discord.ui.View):
-    def __init__(self, user_id: str, timeout: float = 120):
-        super().__init__(timeout=timeout)
-        self.add_item(BannerSelect(user_id=user_id))
-        
-# --------------------------------------------------
 
 class GachaCog(commands.Cog):
     def __init__(self, bot): self.bot = bot
@@ -55,7 +21,8 @@ class GachaCog(commands.Cog):
             p = db.get(Player, str(interaction.user.id))
             if not p:
                 return await interaction.response.send_message("Usá /register primero.", ephemeral=True)
-        view = BannerSelectView(user_id=str(interaction.user.id))
+        # pasamos la instancia GS a la view
+        view = BannerSelectView(user_id=str(interaction.user.id), gs=GS)
         await interaction.response.send_message("Elegí un banner de la lista:", view=view, ephemeral=True)
 
     @app_commands.command(name="pull", description="Tirada x1.")

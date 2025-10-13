@@ -28,16 +28,22 @@ IN PROGRESS:
 
 
 TO DO LIST:
+-Inventario, poner el nombre de la persona
+-sistema de energia
+-Banners activos y inactivos
+-Sistema de leveleo de pjs y conos
+-Sistema de combate
+-Entrenamiento de los pjs?
+-Sistema jades?
+-Modo torre / Universo simulado
 -visualizador de los personajes de banner
 -visualizador de personajes en general
 -Añadir iconos a los mensajes de return
--Stats Light Cones
 -recompensas por cantidad de pulls
 -añadir más tags a personajes
 -Pasar a embeds !inventory y !users
 -objetos de buffs
 -users, añadir tops por suerte o otras cosas
--Entrenamiento de los pjs?
 -Traduccir bot
 
 COMPLETE:
@@ -48,3 +54,5 @@ COMPLETE:
 -Dividir los tipos de pulls
 -Fixear 50/50
 -Añadir conos
+-BannerSelect util
+-HistoryPager util

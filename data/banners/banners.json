@@ -6,8 +6,8 @@
             "name": "Stellar Warp",
             "key":"star_rail_pass",
             "pool":{
-                "five_star_c":["bronya","gepard","welt","clara","himeko","yanqing"],
-                "four_star_c":["march_7th","dan_heng"],
+                "five_star_c":["bronya","gepard","welt","clara","himeko","yanqing","bailu"],
+                "four_star_c":["march_7th","dan_heng","arlan","asta","herta","hook","natasha","pela","qingque","sampo","serval","sushang","tingyun"],
                 "five_star_l": ["time_waits_for_no_one"],
                 "four_star_l": ["woof_walk_time"],
                 "three_star_l": ["sagacity"]
