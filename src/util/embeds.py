@@ -7,15 +7,13 @@ from datetime import datetime, timezone
 
 def make_pull_embed(results, characters, light_cones):
     """
-    results: lista de (rarity:int, item:obj, item_type:str)
+    results: lista de (rarity:int, item:obj, item_type:str, note:str)
     Devuelve: (embeds: list[discord.Embed], files: list[discord.File])
-    En pull10 -> 10 embeds (cada uno con su thumbnail).
-    En pull1  -> 1 embed.
     """
     embeds: list[discord.Embed] = []
     files: list[File] = []
 
-    for idx, (rarity, item, item_type) in enumerate(results, start=1):
+    for idx, (rarity, item, item_type, note) in enumerate(results, start=1):
         stars = "★" * rarity
         if item_type == "character":
             title = f"{stars} {item.name} ({item.rarity}★) — Character"
@@ -26,12 +24,15 @@ def make_pull_embed(results, characters, light_cones):
             desc  = f"{item.path}"
             img_path = Path(item.image)
 
+        # Agregamos la nota (E#, S#, o “Convertido …”)
+        if note:
+            desc += f"\n→ **{note}**"
+
         embed = discord.Embed(title=title, description=desc, color=0x90cdf4)
         embed.set_footer(text=f"Resultado {idx}/{len(results)}")
 
-        # === CLAVE: nombre de archivo ÚNICO por resultado ===
         if img_path.exists():
-            unique_fname = f"{idx}-{item.id}.png"   # <- evita colisiones en el mismo mensaje
+            unique_fname = f"{idx}-{item.id}.png"
             files.append(File(img_path, filename=unique_fname))
             embed.set_thumbnail(url=f"attachment://{unique_fname}")
 
@@ -100,19 +101,8 @@ def make_inventory_embeds(
     *,
     title_prefix: str = "Inventario de",
     color: int = 0x90cdf4,
-    items_per_page: int = 25,   # 🔹 nuevo parámetro
+    items_per_page: int = 25,
 ) -> list[discord.Embed]:
-    """
-    entries: lista de dicts normalizados:
-      {
-        "name": str,
-        "rarity": int,        # 0..5
-        "kind": "char"|"lc",  # para rotular Character / Light Cone
-        "count": int
-      }
-    Devuelve una lista de embeds paginados, con máx. 'items_per_page' por embed.
-    """
-
     # Orden: rareza desc, nombre asc
     items = sorted(entries, key=lambda x: (-x["rarity"], x["name"]))
 
@@ -121,30 +111,27 @@ def make_inventory_embeds(
     for it in items:
         stars = "★" * it["rarity"] if it["rarity"] else ""
         prefix = "[Character]" if it["kind"] == "char" else "[Light Cone]"
-        lines.append(f"{prefix}{stars} **{it['name']}** ×{it['count']}")
+        badge  = f" • {it['badge']}" if it.get("badge") else ""
+        # mostramos también copias totales entre paréntesis, útil para debug
+        lines.append(f"{prefix}{stars} **{it['name']}**{badge}  (copias: {it['count']})")
 
-    # 🔹 Paginación por cantidad de ítems
+    # paginado como ya lo tenías
     pages: list[list[str]] = []
     for i in range(0, len(lines), items_per_page):
         pages.append(lines[i:i + items_per_page])
     if not pages:
         pages = [[]]
 
-    # Crear embeds
     embeds: list[discord.Embed] = []
     total = len(pages)
     for i, page in enumerate(pages, start=1):
         title = f"{title_prefix} {owner.display_name}"
         embed = discord.Embed(title=title, color=color)
-        # autor/avatares
         try:
             embed.set_author(name=str(owner), icon_url=owner.display_avatar.url)
         except Exception:
             embed.set_author(name=str(owner))
-
-        # descripción
         embed.description = "\n".join(page) if page else "_(sin objetos)_"
         embed.set_footer(text=f"Página {i}/{total}")
         embeds.append(embed)
-
     return embeds

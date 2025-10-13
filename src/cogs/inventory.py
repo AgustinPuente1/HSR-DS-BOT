@@ -48,17 +48,24 @@ class InventoryCog(commands.Cog):
         # Normalizar a entries para el embed factory
         entries = []
         for item_id, item_type, total in rows:
+            total = int(total)
             if item_type == "character":
                 name, rarity = CHAR_MAP.get(item_id, (item_id, 0))
                 kind = "char"
+                # E a partir de copies
+                e = max(0, min(6, total - 1))
+                badge = f"E{e}"
             else:
                 name, rarity = LC_MAP.get(item_id, (item_id, 0))
                 kind = "lc"
+                s = max(1, min(5, total))
+                badge = f"S{s}"
             entries.append({
                 "name": name,
                 "rarity": rarity,
                 "kind": kind,
-                "count": int(total),
+                "count": total,
+                "badge": badge,     # <- nuevo
             })
 
         embeds = make_inventory_embeds(owner=owner, entries=entries)

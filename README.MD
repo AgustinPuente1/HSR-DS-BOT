@@ -56,4 +56,5 @@ COMPLETE:
 -BannerSelect util
 -HistoryPager util
 -Inventario, poner el nombre de la persona, mejora de ui
-
+-Eidolones y Superposición
+-Item para cuando ya tenes E6 o S5
