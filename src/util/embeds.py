@@ -91,3 +91,60 @@ def make_history_embed(
     embed.set_footer(text=f"Página {page_index+1}/{total_pages} • Total: {total_rows}")
 
     return embed
+
+# ---------- INVENTORY ------------
+
+def make_inventory_embeds(
+    owner: discord.abc.User | discord.Member,
+    entries: list[dict],
+    *,
+    title_prefix: str = "Inventario de",
+    color: int = 0x90cdf4,
+    items_per_page: int = 25,   # 🔹 nuevo parámetro
+) -> list[discord.Embed]:
+    """
+    entries: lista de dicts normalizados:
+      {
+        "name": str,
+        "rarity": int,        # 0..5
+        "kind": "char"|"lc",  # para rotular Character / Light Cone
+        "count": int
+      }
+    Devuelve una lista de embeds paginados, con máx. 'items_per_page' por embed.
+    """
+
+    # Orden: rareza desc, nombre asc
+    items = sorted(entries, key=lambda x: (-x["rarity"], x["name"]))
+
+    # Armamos líneas
+    lines: list[str] = []
+    for it in items:
+        stars = "★" * it["rarity"] if it["rarity"] else ""
+        prefix = "[Character]" if it["kind"] == "char" else "[Light Cone]"
+        lines.append(f"{prefix}{stars} **{it['name']}** ×{it['count']}")
+
+    # 🔹 Paginación por cantidad de ítems
+    pages: list[list[str]] = []
+    for i in range(0, len(lines), items_per_page):
+        pages.append(lines[i:i + items_per_page])
+    if not pages:
+        pages = [[]]
+
+    # Crear embeds
+    embeds: list[discord.Embed] = []
+    total = len(pages)
+    for i, page in enumerate(pages, start=1):
+        title = f"{title_prefix} {owner.display_name}"
+        embed = discord.Embed(title=title, color=color)
+        # autor/avatares
+        try:
+            embed.set_author(name=str(owner), icon_url=owner.display_avatar.url)
+        except Exception:
+            embed.set_author(name=str(owner))
+
+        # descripción
+        embed.description = "\n".join(page) if page else "_(sin objetos)_"
+        embed.set_footer(text=f"Página {i}/{total}")
+        embeds.append(embed)
+
+    return embeds

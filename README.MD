@@ -28,7 +28,6 @@ IN PROGRESS:
 
 
 TO DO LIST:
--Inventario, poner el nombre de la persona
 -sistema de energia
 -Banners activos y inactivos
 -Sistema de leveleo de pjs y conos
@@ -56,3 +55,5 @@ COMPLETE:
 -Añadir conos
 -BannerSelect util
 -HistoryPager util
+-Inventario, poner el nombre de la persona, mejora de ui
+

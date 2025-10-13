@@ -5,60 +5,68 @@ from sqlalchemy import select, func
 from ..db.session import SessionLocal
 from ..db.models import Player, InventoryItem
 from ..services.data_loader import load_data
+from ..util.embeds import make_inventory_embeds
 
 characters, light_cones, _banners = load_data()
 
+# Mapas para resolver nombres/rareza sin recorrer listas
+CHAR_MAP = {c.id: (c.name, c.rarity) for c in characters.characters}
+LC_MAP   = {l.id: (l.name, l.rarity) for l in light_cones.light_cones}
+
 class InventoryCog(commands.Cog):
-    def __init__(self, bot): self.bot = bot
+    def __init__(self, bot): 
+        self.bot = bot
 
     @app_commands.command(name="inventory", description="Muestra tu inventario o el de otro usuario.")
     @app_commands.describe(user="Usuario (opcional) para ver su inventario")
     async def inventory(self, interaction: discord.Interaction, user: discord.User | None = None):
-        target_id = str((user or interaction.user).id)
+        owner = user or interaction.user
+        target_id = str(owner.id)
+
         with SessionLocal() as db:
             p = db.get(Player, target_id)
             if not p:
                 msg = "Ese usuario no está registrado." if user else "Usá /register primero."
                 return await interaction.response.send_message(msg, ephemeral=True)
 
-            items = db.execute(
-                select(InventoryItem.item_id, InventoryItem.item_type, func.sum(InventoryItem.copies))
+            rows = db.execute(
+                select(
+                    InventoryItem.item_id,
+                    InventoryItem.item_type,
+                    func.sum(InventoryItem.copies)
+                )
                 .where(InventoryItem.player_id == p.user_id)
                 .group_by(InventoryItem.item_id, InventoryItem.item_type)
             ).all()
 
-        if not items: return await interaction.response.send_message("Inventario vacío.", ephemeral=True)
+        if not rows:
+            return await interaction.response.send_message(
+                f"El inventario de **{owner.display_name}** está vacío.",
+                ephemeral=True if not user else False
+            )
 
-        def to_meta(item_id, item_type):
+        # Normalizar a entries para el embed factory
+        entries = []
+        for item_id, item_type, total in rows:
             if item_type == "character":
-                ch = next((x for x in characters.characters if x.id == item_id), None)
-                return (ch.rarity if ch else 0, ch.name if ch else item_id, "char")
-            lc = next((x for x in light_cones.light_cones if x.id == item_id), None)
-            return (lc.rarity if lc else 0, (lc.name) if lc else item_id, "lc")
-
-        # ordenar por rareza desc y nombre
-        sorted_items = sorted(
-            [(*to_meta(iid, itype), cnt, iid, itype) for iid, itype, cnt in items],
-            key=lambda x: (-x[0], x[1])
-        )
-
-        lines = []
-        for rarity, name, kind, cnt, iid, itype in sorted_items:
-            stars = "★"*rarity if rarity else ""
-            prefix = "[Character]" if kind=="char" else "[Light Cone]"
-            lines.append(f"{prefix}{stars} **{name}** ×{cnt}")
-
-        # enviar chunked
-        chunks, buf = [], ""
-        for line in lines:
-            if len(buf) + len(line) + 1 > 1900:
-                chunks.append(buf); buf = line+"\n"
+                name, rarity = CHAR_MAP.get(item_id, (item_id, 0))
+                kind = "char"
             else:
-                buf += line+"\n"
-        if buf: chunks.append(buf)
+                name, rarity = LC_MAP.get(item_id, (item_id, 0))
+                kind = "lc"
+            entries.append({
+                "name": name,
+                "rarity": rarity,
+                "kind": kind,
+                "count": int(total),
+            })
 
-        await interaction.response.send_message(chunks[0])
-        for extra in chunks[1:]:
-            await interaction.followup.send(extra)
+        embeds = make_inventory_embeds(owner=owner, entries=entries)
 
-async def setup(bot): await bot.add_cog(InventoryCog(bot))
+        # Respuesta (pública). Si querés que /inventory propio sea ephemeral, cambiá a True.
+        await interaction.response.send_message(embed=embeds[0])
+        for extra in embeds[1:]:
+            await interaction.followup.send(embed=extra)
+
+async def setup(bot):
+    await bot.add_cog(InventoryCog(bot))
