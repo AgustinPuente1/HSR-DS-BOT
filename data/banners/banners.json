@@ -10,7 +10,9 @@
                 "four_star_c":["march_7th","dan_heng","arlan","asta","herta","hook","natasha","pela","qingque","sampo","serval","sushang","tingyun"],
                 "five_star_l": ["time_waits_for_no_one"],
                 "four_star_l": ["woof_walk_time"],
-                "three_star_l": ["sagacity"]
+                "three_star_l": ["sagacity","arrows","cornucopia","collapsing_sky","amber","void","chorus","data_bank","darting_arrow","fine_fruit",
+                "shattered_home","defense","loop","meshing_cogs","passkey","adversarial","multiplication","mutual_demise","pioneering","hidden_shadow",
+                "mediation","shadowburn","reminiscence"]
             },
             "rates": {
                 "base": { "5": 0.006, "4": 0.051, "3": 0.943 },
@@ -26,7 +28,9 @@
                 "five_star_c":["seele"],
                 "four_star_c":["march_7th","dan_heng"],
                 "four_star_l": ["woof_walk_time"],
-                "three_star_l": ["sagacity"]
+                "three_star_l": ["sagacity","arrows","cornucopia","collapsing_sky","amber","void","chorus","data_bank","darting_arrow","fine_fruit",
+                "shattered_home","defense","loop","meshing_cogs","passkey","adversarial","multiplication","mutual_demise","pioneering","hidden_shadow",
+                "mediation","shadowburn","reminiscence"]
             },
             "rates": {
                 "base": { "5": 0.006, "4": 0.051, "3": 0.943 },

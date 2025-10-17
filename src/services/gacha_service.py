@@ -95,7 +95,7 @@ class GachaService:
             else:
                 return random.choice(std_chars), "character", False
 
-        # --- 4 ESTRELLAS (igual que antes) ---
+        # --- 4 ESTRELLAS ---
         if rarity == 4:
             combined = [(cid, "character") for cid in pool.four_star_c] + \
                        [(lid, "light_cone") for lid in pool.four_star_l]
@@ -106,7 +106,7 @@ class GachaService:
                 item_id, itype = (random.choice(pool.four_star_c), "character")
             return item_id, itype, False
 
-        # --- 3 ESTRELLAS (igual que antes; en tus datos son LCs) ---
+        # --- 3 ESTRELLAS ---
         if pool.three_star_l:
             return random.choice(pool.three_star_l), "light_cone", False
 

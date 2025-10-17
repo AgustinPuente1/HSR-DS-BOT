@@ -19,6 +19,7 @@ EXTENSIONS = [
     "src.cogs.inventory",
     "src.cogs.history",
     "src.cogs.stats",
+    "src.cogs.equipment",
 ]
 
 @bot.event

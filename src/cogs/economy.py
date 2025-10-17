@@ -5,7 +5,8 @@ from datetime import datetime, timedelta, timezone
 from ..db.session import SessionLocal
 from ..db.models import Player, Currency 
 
-DAILY_TICKETS = 5
+DAILY_TICKETS_STANDARD = 5
+DAILY_TICKETS_SPECIAL = 2
 COOLDOWN = timedelta(hours=24)
 
 def to_utc_aware(dt: datetime | None) -> datetime | None:
@@ -36,17 +37,15 @@ class EconomyCog(commands.Cog):
                     m = int((restante.total_seconds() % 3600) // 60)
                     return await interaction.response.send_message(f"Aún no pasaron 24h. Te faltan ~{h}h {m}m.", ephemeral=True)
 
-            # Asegurar que exista currencies
             if p.currencies is None:
                 p.currencies = Currency(tickets_standard=0,tickets_special=0 ,credits=0)
 
-            p.currencies.tickets_standard += DAILY_TICKETS
-            p.currencies.tickets_special += DAILY_TICKETS
+            p.currencies.tickets_standard += DAILY_TICKETS_STANDARD
+            p.currencies.tickets_special += DAILY_TICKETS_SPECIAL
             p.last_daily_at = now
             db.commit()
 
-            # Responder dentro del contexto para evitar DetachedInstanceError
-            await interaction.response.send_message(f"¡Reclamaste {DAILY_TICKETS} tickets!", ephemeral=True)
+            await interaction.response.send_message(f"¡Reclamaste {DAILY_TICKETS_STANDARD} tickets standard y {DAILY_TICKETS_SPECIAL} tickets especiales!", ephemeral=True)
 
     @app_commands.command(name="add100", description="Agrega 100 tickets a tu cuenta.")
     async def add100(self, interaction: discord.Interaction):

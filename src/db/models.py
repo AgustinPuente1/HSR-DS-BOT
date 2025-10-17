@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, ForeignKey, Boolean, DateTime, func
+from sqlalchemy import String, Integer, ForeignKey, Boolean, DateTime, UniqueConstraint, func
 
 class Base(DeclarativeBase): pass
 
@@ -55,4 +55,18 @@ class PullHistory(Base):
         DateTime(timezone=True),
         index=True,
         default=lambda: datetime.now(timezone.utc)
+    )
+
+class Equipment(Base):
+    __tablename__ = "equipment"
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"), index=True, nullable=False)
+    character_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    light_cone_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
+
+    __table_args__ = (
+        # Un LC por PJ
+        UniqueConstraint("player_id", "character_id", name="uq_equipment_player_character"),
+        # Un PJ por LC 
+        UniqueConstraint("player_id", "light_cone_id", name="uq_equipment_player_lightcone"),
     )

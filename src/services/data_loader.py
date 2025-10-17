@@ -20,8 +20,9 @@ class Character(BaseModel):
 class LightCone(BaseModel):
     id: str; name: str; rarity: int
     path: str; image: str
-    hp: int; atk: int; def_: int | None = None  # opcional def
-    # conservar campo "def" del json
+    hp: int; atk: int; def_: int
+    favorites: list[str] = [] 
+
     @field_validator("image")
     @classmethod
     def image_exists(cls, v: str):
@@ -32,10 +33,13 @@ class LightCone(BaseModel):
 
     @classmethod
     def model_validate_json(cls, d: dict):
-        # mapear "def" → "def_"
         d = dict(d)
         if "def" in d and "def_" not in d:
             d["def_"] = d.pop("def")
+        # favorites puede no venir; si viene, debe ser lista
+        favs = d.get("favorites")
+        if favs is not None and not isinstance(favs, list):
+            raise ValueError("favorites debe ser una lista de ids de personajes")
         return cls(**d)
 
 class CharactersFile(BaseModel):
@@ -86,6 +90,12 @@ def load_data():
     # Chequeos de referencias
     char_ids = {c.id for c in characters.characters}
     lc_ids   = {l.id for l in light_cones.light_cones}
+    
+    # Chequeos para light cones con personajes que no existen
+    for lc in light_cones.light_cones:
+        missing = [cid for cid in lc.favorites if cid not in char_ids]
+        if missing:
+            raise ValueError(f"Light Cone '{lc.id}' tiene favorites inválidos: {missing}")
 
     for b in banners.banners:
         for lst_name in ["five_star_c", "four_star_c"]:

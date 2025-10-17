@@ -7,7 +7,7 @@
             "rarity":3,
             "path":"Erudition",
             "image":"data/images/light-cones/sagacity.png",
-            "hp":532, "atk":266, "def":190
+            "hp":33, "atk":16, "def":12
         },
         {
             "id":"woof_walk_time",
@@ -15,15 +15,205 @@
             "rarity":4,
             "path":"Destruction",
             "image":"data/images/light-cones/woof_walk_time.png",
-            "hp":818, "atk":409, "def":284
+            "hp":43, "atk":21, "def":15
         },
         {
             "id":"time_waits_for_no_one",
             "name":"Time Waits for No One",
-                "rarity":5,
+            "rarity":5,
             "path":"Abundance",
             "image":"data/images/light-cones/time_waits_for_no_one.png",
-            "hp":1270, "atk":476, "def":463
+            "hp":57, "atk":21, "def":21,
+            "favorites": ["bailu"]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "id":"arrows",
+            "name":"Arrows",
+            "rarity":3,
+            "path":"Hunt",
+            "image":"data/images/light-cones/arrows.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"cornucopia",
+            "name":"Cornucopia",
+            "rarity":3,
+            "path":"Abundance",
+            "image":"data/images/light-cones/cornucopia.png",
+            "hp":43, "atk":12, "def":12
+        },
+        {
+            "id":"collapsing_sky",
+            "name":"Collapsing Sky",
+            "rarity":3,
+            "path":"Destruction",
+            "image":"data/images/light-cones/collapsing_sky.png",
+            "hp":38, "atk":16, "def":9
+        },
+        {
+            "id":"amber",
+            "name":"Amber",
+            "rarity":3,
+            "path":"Preservation",
+            "image":"data/images/light-cones/amber.png",
+            "hp":38, "atk":12, "def":15
+        },
+        {
+            "id":"void",
+            "name":"Void",
+            "rarity":3,
+            "path":"Nihility",
+            "image":"data/images/light-cones/void.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"chorus",
+            "name":"Chorus",
+            "rarity":3,
+            "path":"Harmony",
+            "image":"data/images/light-cones/chorus.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"data_bank",
+            "name":"Data Bank",
+            "rarity":3,
+            "path":"Erudition",
+            "image":"data/images/light-cones/data_bank.png",
+            "hp":33, "atk":16, "def":12
+        },
+        {
+            "id":"darting_arrow",
+            "name":"Darting Arrow",
+            "rarity":3,
+            "path":"Hunt",
+            "image":"data/images/light-cones/darting_arrow.png",
+            "hp":33, "atk":16, "def":12
+        },
+        {
+            "id":"fine_fruit",
+            "name":"Fine Fruit",
+            "rarity":3,
+            "path":"Abundance",
+            "image":"data/images/light-cones/fine_fruit.png",
+            "hp":43, "atk":14, "def":9
+        },
+        {
+            "id":"shattered_home",
+            "name":"Shattered Home",
+            "rarity":3,
+            "path":"Destruction",
+            "image":"data/images/light-cones/shattered_home.png",
+            "hp":38, "atk":16, "def":9
+        },
+        {
+            "id":"defense",
+            "name":"Defense",
+            "rarity":3,
+            "path":"Preservation",
+            "image":"data/images/light-cones/defense.png",
+            "hp":43, "atk":12, "def":12
+        },
+        {
+            "id":"loop",
+            "name":"Loop",
+            "rarity":3,
+            "path":"Nihility",
+            "image":"data/images/light-cones/loop.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"meshing_cogs",
+            "name":"Menshing Cogs",
+            "rarity":3,
+            "path":"Harmony",
+            "image":"data/images/light-cones/meshing_cogs.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"passkey",
+            "name":"Passkey",
+            "rarity":3,
+            "path":"Erudition",
+            "image":"data/images/light-cones/passkey.png",
+            "hp":33, "atk":16, "def":12
+        },
+        {
+            "id":"adversarial",
+            "name":"Adversarial",
+            "rarity":3,
+            "path":"Hunt",
+            "image":"data/images/light-cones/adversarial.png",
+            "hp":33, "atk":16, "def":12
+        },
+        {
+            "id":"multiplication",
+            "name":"Multiplication",
+            "rarity":3,
+            "path":"Abundance",
+            "image":"data/images/light-cones/multiplication.png",
+            "hp":43, "atk":14, "def":9
+        },
+        {
+            "id":"mutual_demise",
+            "name":"Mutual Demise",
+            "rarity":3,
+            "path":"Destruction",
+            "image":"data/images/light-cones/mutual_demise.png",
+            "hp":38, "atk":16, "def":9
+        },
+        {
+            "id":"pioneering",
+            "name":"Pioneering",
+            "rarity":3,
+            "path":"Preservation",
+            "image":"data/images/light-cones/pioneering.png",
+            "hp":43, "atk":12, "def":12
+        },
+        {
+            "id":"hidden_shadow",
+            "name":"Hidden Shadow",
+            "rarity":3,
+            "path":"Nihility",
+            "image":"data/images/light-cones/hidden_shadow.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"mediation",
+            "name":"Mediation",
+            "rarity":3,
+            "path":"Harmony",
+            "image":"data/images/light-cones/mediation.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"shadowburn",
+            "name":"Shadowburn",
+            "rarity":3,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/shadowburn.png",
+            "hp":38, "atk":14, "def":12
+        },
+        {
+            "id":"reminiscence",
+            "name":"Reminiscence",
+            "rarity":3,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/reminiscence.png",
+            "hp":28, "atk":19, "def":12
         }
     ]
 }
