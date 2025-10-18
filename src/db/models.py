@@ -70,3 +70,14 @@ class Equipment(Base):
         # Un PJ por LC 
         UniqueConstraint("player_id", "light_cone_id", name="uq_equipment_player_lightcone"),
     )
+    
+class AchievementState(Base):
+    __tablename__ = "achievement_state"
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    player_id: Mapped[str] = mapped_column(ForeignKey("players.user_id"), index=True, nullable=False)
+    achievement_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    claimed_at: Mapped["DateTime"] = mapped_column(DateTime(timezone=True), nullable=True, default=None)
+
+    __table_args__ = (
+        UniqueConstraint("player_id", "achievement_id", name="uq_player_achievement"),
+    )

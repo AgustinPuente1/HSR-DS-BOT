@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "achievements": [
+        {
+            "id": "pulls_standard_50",
+            "name": "Viajero constante I",
+            "desc": "Realiza 50 tiradas en el banner Standard.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_pass", "count": 50 },
+            "rewards": { "tickets_standard": 10, "credits": 5000 }
+        },
+        {
+            "id": "pulls_standard_100",
+            "name": "Viajero constante II",
+            "desc": "Realiza 100 tiradas en el banner Standard.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_pass", "count": 100 },
+            "rewards": { "tickets_standard": 10, "credits": 5000 }
+        },
+
+
+
+        {
+            "id": "pulls_special_50",
+            "name": "Cazador de eventos I",
+            "desc": "Realiza 50 tiradas en banners especiales.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_special_pass", "count": 50 },
+            "rewards": { "tickets_special": 10 }
+        },
+        {
+            "id": "pulls_special_100",
+            "name": "Cazador de eventos II",
+            "desc": "Realiza 100 tiradas en banners especiales.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_special_pass", "count": 100 },
+            "rewards": { "tickets_special": 10 }
+        },
+
+
+
+        {
+            "id": "first_equip",
+            "name": "¡Sinergia!",
+            "desc": "Equipa un Light Cone a cualquier personaje.",
+            "type": "has_any_equipment",
+            "params": {},
+            "rewards": { "tickets_standard": 3, "credits": 1000 }
+        },
+        {
+            "id": "level_10_any",
+            "name": "Calentando motores",
+            "desc": "Alcanza nivel 10 con cualquier personaje.",
+            "type": "character_level_reached",
+            "params": { "level": 10 },
+            "rewards": { "credits": 2000 }
+        },
+        {
+            "id": "first_battle_win",
+            "name": "¡Victoria!",
+            "desc": "Gana tu primera batalla.",
+            "type": "battle_wins",
+            "params": { "count": 1 },
+            "rewards": { "tickets_standard": 1, "credits": 500 }
+        }
+    ]
+}

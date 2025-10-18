@@ -5,6 +5,7 @@
             "id":"stellar_warp",
             "name": "Stellar Warp",
             "key":"star_rail_pass",
+            "active": true,
             "pool":{
                 "five_star_c":["bronya","gepard","welt","clara","himeko","yanqing","bailu"],
                 "four_star_c":["march_7th","dan_heng","arlan","asta","herta","hook","natasha","pela","qingque","sampo","serval","sushang","tingyun"],
@@ -24,9 +25,29 @@
             "id":"event_warp_1_seele",                
             "name": "Character Event Warp - Seele",
             "key":"star_rail_special_pass",
+            "active": true,
             "pool":{
                 "five_star_c":["seele"],
-                "four_star_c":["march_7th","dan_heng"],
+                "four_star_c":["march_7th","dan_heng","herta"],
+                "four_star_l": ["woof_walk_time"],
+                "three_star_l": ["sagacity","arrows","cornucopia","collapsing_sky","amber","void","chorus","data_bank","darting_arrow","fine_fruit",
+                "shattered_home","defense","loop","meshing_cogs","passkey","adversarial","multiplication","mutual_demise","pioneering","hidden_shadow",
+                "mediation","shadowburn","reminiscence"]
+            },
+            "rates": {
+                "base": { "5": 0.006, "4": 0.051, "3": 0.943 },
+                "hard_pity": { "five_at": 90, "four_at": 10 },
+                "soft_pity": { "start_5": 74, "inc_5": 0.06, "start_4": 8, "inc_4": 0.10 }
+            }
+        },
+        {
+            "id":"event_warp_1_jingyuan",                
+            "name": "Character Event Warp - Jing Yuan",
+            "key":"star_rail_special_pass",
+            "active": true,
+            "pool":{
+                "five_star_c":["jingyuan"],
+                "four_star_c":["pela","natasha","asta"],
                 "four_star_l": ["woof_walk_time"],
                 "three_star_l": ["sagacity","arrows","cornucopia","collapsing_sky","amber","void","chorus","data_bank","darting_arrow","fine_fruit",
                 "shattered_home","defense","loop","meshing_cogs","passkey","adversarial","multiplication","mutual_demise","pioneering","hidden_shadow",

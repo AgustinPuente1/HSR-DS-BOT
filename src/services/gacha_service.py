@@ -9,6 +9,12 @@ class GachaService:
         self.light_cones = {l.id: l for l in light_cones.light_cones}
         self.banners = {b.id: b for b in banners.banners}
 
+    def is_banner_active(self, banner_id: str) -> bool:
+        b = self.banners.get(banner_id)
+        if not b:
+            return False
+        return getattr(b, "active", True)
+
     def roll_rarity(self, pity4: int, pity5: int, rates) -> int:
         if pity5 + 1 >= rates.hard_pity["five_at"]:
             return 5

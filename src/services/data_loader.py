@@ -63,6 +63,7 @@ class Banner(BaseModel):
     pool: BannerPool
     rates: BannerRates
     featured: dict | None = None
+    active: bool = True
 
 class BannersFile(BaseModel):
     version: int

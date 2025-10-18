@@ -24,7 +24,7 @@ def superpos_from_copies(copies: int) -> int:
 class GachaCog(commands.Cog):
     def __init__(self, bot): self.bot = bot
 
-    @app_commands.command(name="setbanner", description="Cambia tu banner activo.")
+    @app_commands.command(name="set_banner", description="Cambia tu banner activo.")
     async def setbanner(self, interaction: discord.Interaction):
         with SessionLocal() as db:
             p = db.get(Player, str(interaction.user.id))
@@ -51,6 +51,11 @@ class GachaCog(commands.Cog):
 
             gs = db.get(GachaState, p.user_id)
             b = GS.banners[gs.banner_id]
+            
+            if not GS.is_banner_active(gs.banner_id):
+                return await interaction.followup.send(
+                    f"El banner **{b.name}** está **inactivo** en este momento. Elegí otro con `/set_banner`.",
+                )
 
             # Tickets por tipo de banner
             if b.key == "star_rail_pass":
@@ -94,20 +99,29 @@ class GachaCog(commands.Cog):
                     if item_type == "character":
                         current_e = eidolons_from_copies(inv.copies)
                         if current_e >= 6:
-                            # Overcap → convertir a tickets especiales
-                            bonus = 5 if rarity == 5 else (1 if rarity == 4 else 0)
-                            p.currencies.tickets_special += bonus
-                            note = f"Convertido: +{bonus} Special Pass (E6)"
-                            # NO aumentar copies
+                            if rarity == 5:
+                                p.currencies.tickets_special += 5
+                                note = "Convertido: +5 Special Pass (E6)"
+                            elif rarity == 4:
+                                p.currencies.tickets_standard += 2
+                                note = "Convertido: +2 Standard Pass (E6)"
+                            else :
+                                note = "Máximo de copias"
+                            
                         else:
                             inv.copies += 1
                             note = f"E{eidolons_from_copies(inv.copies)}"
                     else:
                         current_s = superpos_from_copies(inv.copies)
                         if current_s >= 5:
-                            bonus = 5 if rarity == 5 else (1 if rarity == 4 else 0)
-                            p.currencies.tickets_special += bonus
-                            note = f"Convertido: +{bonus} Special Pass (S5)"
+                            if rarity == 5:
+                                p.currencies.tickets_special += 5
+                                note = "Convertido: +5 Special Pass (E6)"
+                            elif rarity == 4:
+                                p.currencies.tickets_standard += 2
+                                note = "Convertido: +2 Standard Pass (E6)"
+                            else :
+                                note = "Máximo de copias"
                         else:
                             inv.copies += 1
                             note = f"S{superpos_from_copies(inv.copies)}"
