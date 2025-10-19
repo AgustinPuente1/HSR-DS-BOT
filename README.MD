@@ -36,9 +36,9 @@ IN PROGRESS:
 
 
 TO DO LIST:
--Dividir embeds.py en varios
+-Añadir Botones al inventario, que no salgan todas la paginas de una
+-Dividir embeds.py y achivos cogs en varios
 -buffos especiales por Eidolones y superposicion, crit rate, crit damage, etc
--Boton de hacer otra pull luego la pull
 -Comprar pjs o conos con creditos?
 -Banners de conos?
 -Cambiar visualización del inventario, elegible personajes, light cones y todo
@@ -81,3 +81,5 @@ COMPLETE:
 -Banners activos y inactivos
 -Boton de reclamar en achievements
 -Distribuir código achievements
+-Boton de hacer otra pull
+-Distrubuir código de gacha

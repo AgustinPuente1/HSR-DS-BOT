@@ -1,6 +1,6 @@
 import discord
-from ..db.session import SessionLocal
-from ..db.models import GachaState
+from ...db.session import SessionLocal
+from ...db.models import GachaState
 
 class BannerSelect(discord.ui.Select):
     def __init__(self, user_id: str, gs, *, max_options: int = 25):
