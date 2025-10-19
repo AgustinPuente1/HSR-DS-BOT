@@ -30,13 +30,15 @@ Equipment
 
 Achievements
 /achievements
-/claim_all
 
 
 IN PROGRESS:
 
 
 TO DO LIST:
+-buffos especiales por Eidolones y superposicion, crit rate, crit damage, etc
+-Boton de hacer otra pull luego la pull
+-Comprar pjs o conos con creditos?
 -Banners de conos?
 -Cambiar visualización del inventario, elegible personajes, light cones y todo
 -Hacer una guia del bot
@@ -55,7 +57,7 @@ TO DO LIST:
 -objetos de buffs
 -users, añadir tops por suerte o otras cosas
 -Traduccir bot
--Sacar etiquetas id (/achievements,, /setbanner)
+-Sacar etiquetas id (/achievements, /setbanner)
 
 COMPLETE:
 -Migrar comandos a slash commands
@@ -76,3 +78,4 @@ COMPLETE:
 -Recompensa de tirada de banner repetido
 -Achievements generales
 -Banners activos y inactivos
+-Boton de reclamar en achievements

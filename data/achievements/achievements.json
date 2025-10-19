@@ -15,7 +15,23 @@
             "desc": "Realiza 100 tiradas en el banner Standard.",
             "type": "pulls_by_key",
             "params": { "key": "star_rail_pass", "count": 100 },
-            "rewards": { "tickets_standard": 10, "credits": 5000 }
+            "rewards": { "tickets_standard": 10, "credits": 10000 }
+        },
+        {
+            "id": "pulls_standard_150",
+            "name": "Viajero constante III",
+            "desc": "Realiza 150 tiradas en el banner Standard.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_pass", "count": 150 },
+            "rewards": { "tickets_standard": 10, "credits": 15000 }
+        },
+        {
+            "id": "pulls_standard_200",
+            "name": "Viajero constante IV",
+            "desc": "Realiza 200 tiradas en el banner Standard.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_pass", "count": 200 },
+            "rewards": { "tickets_standard": 10, "credits": 20000 }
         },
 
 
@@ -36,6 +52,16 @@
             "params": { "key": "star_rail_special_pass", "count": 100 },
             "rewards": { "tickets_special": 10 }
         },
+        {
+            "id": "pulls_special_150",
+            "name": "Cazador de eventos III",
+            "desc": "Realiza 150 tiradas en banners especiales.",
+            "type": "pulls_by_key",
+            "params": { "key": "star_rail_special_pass", "count": 150 },
+            "rewards": { "tickets_special": 10 }
+        },
+
+
 
 
 
