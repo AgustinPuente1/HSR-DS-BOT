@@ -36,6 +36,7 @@ IN PROGRESS:
 
 
 TO DO LIST:
+-Dividir embeds.py en varios
 -buffos especiales por Eidolones y superposicion, crit rate, crit damage, etc
 -Boton de hacer otra pull luego la pull
 -Comprar pjs o conos con creditos?
@@ -79,3 +80,4 @@ COMPLETE:
 -Achievements generales
 -Banners activos y inactivos
 -Boton de reclamar en achievements
+-Distribuir código achievements
