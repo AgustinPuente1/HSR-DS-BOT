@@ -1,6 +1,6 @@
 import discord
 
-class HistoryPager(discord.ui.View):
+class Pager(discord.ui.View):
     """
     Paginador genérico para listas de embeds.
     """

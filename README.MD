@@ -36,7 +36,11 @@ IN PROGRESS:
 
 
 TO DO LIST:
--Añadir Botones al inventario, que no salgan todas la paginas de una
+-En el selector de conos, mostrar pjs favoritos
+-Mostrar el logro más alto en achievemens?
+-Tabla de tipos para peleas? peleas de 4
+-añadir más tags a personajes, (rafaga, rebote, daño x vida o por atk, supp dps, sp, follow-up, invocacion, daño por ultimate, counter attack)
+-Cambiar la imagen de cyrene
 -Dividir embeds.py y achivos cogs en varios
 -buffos especiales por Eidolones y superposicion, crit rate, crit damage, etc
 -Comprar pjs o conos con creditos?
@@ -53,7 +57,6 @@ TO DO LIST:
 -visualizador de los personajes de banner
 -visualizador de personajes en general
 -Añadir iconos a los mensajes de return
--añadir más tags a personajes
 -Pasar a embeds /users y /global_stats
 -objetos de buffs
 -users, añadir tops por suerte o otras cosas
@@ -83,3 +86,4 @@ COMPLETE:
 -Distribuir código achievements
 -Boton de hacer otra pull
 -Distrubuir código de gacha
+-Añadir Botones al inventario

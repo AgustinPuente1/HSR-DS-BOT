@@ -13,8 +13,16 @@ def make_pull_embed(results, characters, light_cones):
     embeds: list[discord.Embed] = []
     files: list[File] = []
 
+    # Colores por rareza
+    COLORS = {
+        3: 0x5dade2,  # azul brillante
+        4: 0x9b59b6,  # violeta intenso
+        5: 0xffd700   # dorado clásico
+    }
+
     for idx, (rarity, item, item_type, note) in enumerate(results, start=1):
         stars = "★" * rarity
+
         if item_type == "character":
             title = f"{stars} {item.name} ({item.rarity}★) — Character"
             desc  = f"{item.path} • {item.element}"
@@ -24,11 +32,13 @@ def make_pull_embed(results, characters, light_cones):
             desc  = f"{item.path}"
             img_path = Path(item.image)
 
-        # Agregamos la nota (E#, S#, o “Convertido …”)
         if note:
             desc += f"\n→ **{note}**"
 
-        embed = discord.Embed(title=title, description=desc, color=0x90cdf4)
+        # Determinar color según rareza (default celeste)
+        color = COLORS.get(rarity, 0x90cdf4)
+
+        embed = discord.Embed(title=title, description=desc, color=color)
         embed.set_footer(text=f"Resultado {idx}/{len(results)}")
 
         if img_path.exists():

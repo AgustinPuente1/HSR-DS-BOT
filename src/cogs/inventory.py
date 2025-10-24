@@ -6,18 +6,21 @@ from ..db.session import SessionLocal
 from ..db.models import Player, InventoryItem
 from ..services.data_loader import load_data
 from ..util.embeds import make_inventory_embeds
+from ..util.pager import Pager  
 
 characters, light_cones, _banners = load_data()
 
-# Mapas para resolver nombres/rareza sin recorrer listas
 CHAR_MAP = {c.id: (c.name, c.rarity) for c in characters.characters}
 LC_MAP   = {l.id: (l.name, l.rarity) for l in light_cones.light_cones}
 
 class InventoryCog(commands.Cog):
-    def __init__(self, bot): 
+    def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.command(name="inventory", description="Muestra tu inventario o el de otro usuario.")
+    @app_commands.command(
+        name="inventory",
+        description="Muestra tu inventario o el de otro usuario."
+    )
     @app_commands.describe(user="Usuario (opcional) para ver su inventario")
     async def inventory(self, interaction: discord.Interaction, user: discord.User | None = None):
         owner = user or interaction.user
@@ -52,7 +55,6 @@ class InventoryCog(commands.Cog):
             if item_type == "character":
                 name, rarity = CHAR_MAP.get(item_id, (item_id, 0))
                 kind = "char"
-                # E a partir de copies
                 e = max(0, min(6, total - 1))
                 badge = f"E{e}"
             else:
@@ -65,15 +67,18 @@ class InventoryCog(commands.Cog):
                 "rarity": rarity,
                 "kind": kind,
                 "count": total,
-                "badge": badge,     # <- nuevo
+                "badge": badge,
             })
 
         embeds = make_inventory_embeds(owner=owner, entries=entries)
+        
+        view = Pager(user_id=str(interaction.user.id), embeds=embeds)
 
-        # Respuesta (pública). Si querés que /inventory propio sea ephemeral, cambiá a True.
-        await interaction.response.send_message(embed=embeds[0])
-        for extra in embeds[1:]:
-            await interaction.followup.send(embed=extra)
+        await interaction.response.send_message(
+            embed=embeds[0],
+            view=view,
+            ephemeral=False  # cambialo a True si querés que sea privado
+        )
 
 async def setup(bot):
     await bot.add_cog(InventoryCog(bot))

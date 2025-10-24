@@ -15,7 +15,8 @@
             "rarity":4,
             "path":"Destruction",
             "image":"data/images/light-cones/woof_walk_time.png",
-            "hp":43, "atk":21, "def":15
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["arlan","asta"]
         },
         {
             "id":"time_waits_for_no_one",
@@ -214,6 +215,1110 @@
             "path":"Remembrance",
             "image":"data/images/light-cones/reminiscence.png",
             "hp":28, "atk":19, "def":12
+        },
+
+
+
+
+
+
+        
+        {
+            "id":"post-op_conversation",
+            "name":"Post-Op Conversation",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/post-op_conversation.png",
+            "hp":48, "atk":19, "def":15,
+            "favorites": ["natasha"]
+        },
+        {
+            "id":"good_night_and_sleep_well",
+            "name":"Good Night and Sleep Well",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/good_night_and_sleep_well.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["pela", "serval"]
+        },
+        {
+            "id":"day_one_of_my_new_life",
+            "name":"Day One of My New Life",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/day_one_of_my_new_life.png",
+            "hp":43, "atk":16, "def":21,
+            "favorites": ["march_7th"]
+        },
+        {
+            "id":"only_silence_remains",
+            "name":"Only Silence Remains",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/only_silence_remains.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["dan_heng"]
+        },
+        {
+            "id":"memories_of_the_past",
+            "name":"Memories of the Past",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/memories_of_the_past.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["bronya"]
+        },
+        {
+            "id":"the_moles_welcome_you",
+            "name":"The Moles Welcome You",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/the_moles_welcome_you.png",
+            "hp":48, "atk":21, "def":12,
+            "favorites": ["hook"]
+        },
+        {
+            "id":"the_birth_of_the_self",
+            "name":"The Birth of the Self",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/the_birth_of_the_self.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["herta"]
+        },
+        {
+            "id":"shared_feeling",
+            "name":"Shared Feeling",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/shared_feeling.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["natasha", "clara"]
+        },
+        {
+            "id":"eyes_of_the_prey",
+            "name":"Eyes of the Prey",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/eyes_of_the_prey.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["sampo"]
+        },
+        {
+            "id":"landaus_choice",
+            "name":"Landau's Choice",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/landaus_choice.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["gepard", "serval"]
+        },
+        {
+            "id":"swordplay",
+            "name":"Swordplay",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/swordplay.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["sushang"]
+        },
+        {
+            "id":"planetary_rendezvous",
+            "name":"Planetary Rendezvous",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/planetary_rendezvous.png",
+            "hp":48, "atk":19, "def":15,
+            "favorites": ["asta"]
+        },
+        {
+            "id":"a_secret_vow",
+            "name":"A Secret Vow",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/a_secret_vow.png",
+            "hp":48, "atk":21, "def":12,
+            "favorites": ["arlan"]
+        },
+        {
+            "id":"make_the_world_clamor",
+            "name":"Make the World Clamor",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/make_the_world_clamor.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["serval"]
+        },
+        {
+            "id":"perfect_timing",
+            "name":"Perfect Timing",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/perfect_timing.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["luocha","jing_yuan"]
+        },
+        {
+            "id":"resolution_shines_as_pearls_of_sweat",
+            "name":"Resolution Shines As Pearls of Sweat",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/resolution_shines_as_pearls_of_sweat.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["luka"]
+        },
+        {
+            "id":"trend_of_the_universal_market",
+            "name":"Trend of the Universal Market",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/trend_of_the_universal_market.png",
+            "hp":48, "atk":16, "def":18,
+            "favorites": ["aventurine","topaz"]
+        },
+        {
+            "id":"subscribe_for_more",
+            "name":"Subscribe for More!",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/subscribe_for_more.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["guinaifen","sushang"]
+        },
+        {
+            "id":"dance_dance_dance",
+            "name":"Dance! Dance! Dance!",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/dance_dance_dance.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["clara","hook"]
+        },
+        {
+            "id":"under_the_blue_sky",
+            "name":"Under the Blue Sky",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/under_the_blue_sky.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["hanya","xueyi"]
+        },
+        {
+            "id":"geniuses_repose",
+            "name":"Geniuses' Repose",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/geniuses_repose.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["herta","ruan_mei"]
+        },
+        {
+            "id":"quid_pro_quo",
+            "name":"Quid Pro Quo",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/quid_pro_quo.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["bailu"]
+        },
+        {
+            "id":"fermata",
+            "name":"Fermata",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/fermata.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["kafka"]
+        },
+        {
+            "id":"we_are_wildfire",
+            "name":"We Are Wildfire",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/we_are_wildfire.png",
+            "hp":33, "atk":21, "def":21,
+            "favorites": ["seele"]
+        },
+        {
+            "id":"river_flows_in_spring",
+            "name":"River Flows in Spring",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/river_flows_in_spring.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["yanqing"]
+        },
+        {
+            "id":"past_and_future",
+            "name":"Past and Future",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/past_and_future.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["yukong"]
+        },
+        {
+            "id":"the_seriousness_of_breakfast",
+            "name":"The Seriousness of Breakfast",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/the_seriousness_of_breakfast.png",
+            "hp":38, "atk":21, "def":18
+        },
+        {
+            "id":"warmth_shortens_cold_nights",
+            "name":"Warmth Shortens Cold Nights",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/warmth_shortens_cold_nights.png",
+            "hp":48, "atk":16, "def":18,
+            "favorites": ["lynx","pela"]
+        },
+        {
+            "id":"we_will_meet_again",
+            "name":"We Will Meet Again",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/we_will_meet_again.png",
+            "hp":38, "atk":24, "def":15,
+            "favorites": ["silver_wolf"]
+        },
+        {
+            "id":"this_is_me",
+            "name":"This Is Me!",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/this_is_me.png",
+            "hp":38, "atk":16, "def":24,
+            "favorites": ["himeko","march_7th"]
+        },
+        {
+            "id":"return_to_darkness",
+            "name":"Return to Darkness",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/return_to_darkness.png",
+            "hp":38, "atk":24, "def":15,
+            "favorites": ["hanya","xueyi"]
+        },
+        {
+            "id":"carve_the_moon_weave_the_clouds",
+            "name":"Carve the Moon, Weave the Clouds",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/carve_the_moon_weave_the_clouds.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["tingyun"]
+        },
+        {
+            "id":"nowhere_to_run",
+            "name":"Nowhere to Run",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/nowhere_to_run.png",
+            "hp":43, "atk":24, "def":12,
+            "favorites": ["blade","dan_heng"]
+        },
+        {
+            "id":"today_is_another_peaceful_day",
+            "name":"Today Is Another Peaceful Day",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/today_is_another_peaceful_day.png",
+            "hp":38, "atk":24, "def":15,
+            "favorites": ["fu_xuan","qingque"]
+        },
+        {
+            "id":"what_is_real",
+            "name":"What Is Real?",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/what_is_real.png",
+            "hp":48, "atk":19, "def":15,
+            "favorites": ["gallagher"]
+        },
+        {
+            "id":"dreamville_adventure",
+            "name":"Dreamville Adventure",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/dreamville_adventure.png",
+            "hp":43, "atk":19, "def":18
+        },
+        {
+            "id":"final_victor",
+            "name":"Final Victor",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/final_victor.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["aventurine","dr_ratio"]
+        },
+        {
+            "id":"flames_afar",
+            "name":"Flames Afar",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/flames_afar.png",
+            "hp":48, "atk":21, "def":12,
+            "favorites": ["firefly"]
+        },
+        {
+            "id":"destinys_threads_forewoven",
+            "name":"Destiny's Threads Forewoven",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/destinys_threads_forewoven.png",
+            "hp":43, "atk":16, "def":21,
+            "favorites": ["aventurine","black_swan","firefly","sparkle"]
+        },
+        {
+            "id":"the_day_the_cosmos_fell",
+            "name":"The Day The Cosmos Fell",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/the_day_the_cosmos_fell.png",
+            "hp":43, "atk":21, "def":15
+        },
+        {
+            "id":"its_showtime",
+            "name":"It's Showtime",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/its_showtime.png",
+            "hp":48, "atk":21, "def":12,
+            "favorites": ["sampo","sparkle"]
+        },
+        {
+            "id":"indelible_promise",
+            "name":"Indelible Promise",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/indelible_promise.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["misha"]
+        },
+        {
+            "id":"concert_for_two",
+            "name":"Concert for Two",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/concert_for_two.png",
+            "hp":43, "atk":16, "def":21,
+            "favorites": ["robin","sunday"]
+        },
+        {
+            "id":"boundless_choreo",
+            "name":"Boundless Choreo",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/boundless_choreo.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["acheron","black_swan"]
+        },
+        {
+            "id":"after_the_charmony_fall",
+            "name":"After the Charmony Fall",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/after_the_charmony_fall.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["sunday"]
+        },
+        {
+            "id":"poised_to_bloom",
+            "name":"Poised to Bloom",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/poised_to_bloom.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["march_7th"]
+        },
+        {
+            "id":"shadowed_by_night",
+            "name":"Shadowed by Night",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/shadowed_by_night.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["moze"]
+        },
+        {
+            "id":"dreams_montage",
+            "name":"Dream's Montage",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/dreams_montage.png",
+            "hp":43, "atk":19, "def":18
+        },
+        {
+            "id":"victory_in_a_blink",
+            "name":"Victory In a Blink",
+            "rarity":4,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/victory_in_a_blink.png",
+            "hp":38, "atk":21, "def":18,
+            "favorites": ["mydei","phainon"]
+        },
+        {
+            "id":"geniuses_greetings",
+            "name":"Geniuses' Greetings",
+            "rarity":4,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/geniuses_greetings.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["ruan_mei","the_herta"]
+        },
+        {
+            "id":"sweat_now_cry_less",
+            "name":"Sweat Now, Cry Less",
+            "rarity":4,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/sweat_now_cry_less.png",
+            "hp":48, "atk":24, "def":9,
+            "favorites": ["feixiao"]
+        },
+        {
+            "id":"journey_forever_peaceful",
+            "name":"Journey, Forever Peaceful",
+            "rarity":4,
+            "path":"Preservation",
+            "image":"data/images/light-cones/journey_forever_peaceful.png",
+            "hp":48, "atk":16, "def":24,
+            "favorites": ["aventurine"]
+        },
+        {
+            "id":"the_storys_next_page",
+            "name":"The Story's Next Page",
+            "rarity":4,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/the_storys_next_page.png",
+            "hp":48, "atk":16, "def":18,
+            "favorites": ["cyrene"]
+        },
+        {
+            "id":"unto_tomorrows_morrow",
+            "name":"Unto Tomorrow's Morrow",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/unto_tomorrows_morrow.png",
+            "hp":48, "atk":21, "def":18,
+            "favorites": ["tribbie"]
+        },
+        {
+            "id":"in_pursuit_of_the_wind",
+            "name":"In Pursuit of the Wind",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/in_pursuit_of_the_wind.png",
+            "hp":48, "atk":21, "def":18,
+            "favorites": ["aglaea","cipher"]
+        },
+        {
+            "id":"the_flower_remembers",
+            "name":"The Flower Remembers",
+            "rarity":4,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/the_flower_remembers.png",
+            "hp":48, "atk":24, "def":15,
+            "favorites": ["castorice"]
+        },
+        {
+            "id":"a_trail_of_bygone_blood",
+            "name":"A Trail of Bygone Blood",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/a_trail_of_bygone_blood.png",
+            "hp":48, "atk":24, "def":15,
+            "favorites": ["mydei"]
+        },
+        {
+            "id":"a_dream_scented_in_wheat",
+            "name":"A Dream Scented in Wheat",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/a_dream_scented_in_wheat.png",
+            "hp":43, "atk":24, "def":18,
+            "favorites": ["phainon"]
+        },
+        {
+            "id":"holiday_thermae_escapade",
+            "name":"Holiday Thermae Escapade",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/holiday_thermae_escapade.png",
+            "hp":48, "atk":24, "def":15,
+            "favorites": ["hyacine","tribbie"]
+        },
+        {
+            "id":"see_you_at_the_end",
+            "name":"See You at the End",
+            "rarity":4,
+            "path":"Hunt",
+            "image":"data/images/light-cones/see_you_at_the_end.png",
+            "hp":43, "atk":24, "def":18,
+            "favorites": ["anaxa"]
+        },
+        {
+            "id":"before_the_tutorial_mission_starts",
+            "name":"Before the Tutorial Mission Starts",
+            "rarity":4,
+            "path":"Nihility",
+            "image":"data/images/light-cones/before_the_tutorial_mission_starts.png",
+            "hp":43, "atk":21, "def":15,
+            "favorites": ["silver_wolf","blade"]
+        },
+        {
+            "id":"hey_over_here",
+            "name":"Hey, Over Here",
+            "rarity":4,
+            "path":"Abundance",
+            "image":"data/images/light-cones/hey_over_here.png",
+            "hp":43, "atk":19, "def":18,
+            "favorites": ["guinaifen","sushang","huohuo"]
+        },
+        {
+            "id":"for_tomorrows_journey",
+            "name":"For Tomorrow's Journey",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/for_tomorrows_journey.png",
+            "hp":43, "atk":21, "def":15
+        },
+        {
+            "id":"ninja_record_sound_hunt",
+            "name":"Ninja Record: Sound Hunt",
+            "rarity":4,
+            "path":"Destruction",
+            "image":"data/images/light-cones/ninja_record_sound_hunt.png",
+            "hp":48, "atk":21, "def":12,
+            "favorites": ["robin","rappa"]
+        },
+        {
+            "id":"the_great_cosmic_enterprise",
+            "name":"The Great Cosmic Enterprise",
+            "rarity":4,
+            "path":"Erudition",
+            "image":"data/images/light-cones/the_great_cosmic_enterprise.png",
+            "hp":43, "atk":21, "def":15
+        },
+        {
+            "id":"the_forever_victual",
+            "name":"The Forever Victual",
+            "rarity":4,
+            "path":"Harmony",
+            "image":"data/images/light-cones/the_forever_victual.png",
+            "hp":43, "atk":21, "def":15
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "id":"night_on_the_milky_way",
+            "name":"Night on the Milky Way",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/night_on_the_milky_way.png",
+            "hp":52, "atk":26, "def":18,
+            "favorites": ["himeko"]
+        },
+        {
+            "id":"in_the_night",
+            "name":"In the Night",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/in_the_night.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["seele"]
+        },
+        {
+            "id":"something_irreplaceable",
+            "name":"Something Irreplaceable",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/something_irreplaceable.png",
+            "hp":52, "atk":26, "def":18,
+            "favorites": ["clara"]
+        },
+        {
+            "id":"but_the_battle_isnt_over",
+            "name":"But the Battle Isn't Over",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/but_the_battle_isnt_over.png",
+            "hp":52, "atk":24, "def":21,
+            "favorites": ["bronya"]
+        },
+        {
+            "id":"in_the_name_of_the_world",
+            "name":"In the Name of the World",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/in_the_name_of_the_world.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["welt"]
+        },
+        {
+            "id":"moment_of_victory",
+            "name":"Moment of Victory",
+            "rarity":5,
+            "path":"Preservation",
+            "image":"data/images/light-cones/moment_of_victory.png",
+            "hp":48, "atk":21, "def":27,
+            "favorites": ["gepard"]
+        },
+        {
+            "id":"patience_is_all_you_need",
+            "name":"Patience Is All You Need",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/patience_is_all_you_need.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["kafka"]
+        },
+        {
+            "id":"incessant_rain",
+            "name":"Incessant Rain",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/incessant_rain.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["silver_wolf"]
+        },
+        {
+            "id":"echoes_of_the_coffin",
+            "name":"Echoes of the Coffin",
+            "rarity":5,
+            "path":"Abundance",
+            "image":"data/images/light-cones/echoes_of_the_coffin.png",
+            "hp":52, "atk":26, "def":18,
+            "favorites": ["luocha"]
+        },
+        {
+            "id":"the_unreachable_side",
+            "name":"The Unreachable Side",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/the_unreachable_side.png",
+            "hp":57, "atk":26, "def":15,
+            "favorites": ["blade"]
+        },
+        {
+            "id":"before_dawn",
+            "name":"Before Dawn",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/before_dawn.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["jing_yuan"]
+        },
+        {
+            "id":"she_already_shut_her_eyes",
+            "name":"She Already Shut Her Eyes",
+            "rarity":5,
+            "path":"Preservation",
+            "image":"data/images/light-cones/she_already_shut_her_eyes.png",
+            "hp":57, "atk":19, "def":24,
+            "favorites": ["fu_xuan"]
+        },
+        {
+            "id":"sleep_like_the_dead",
+            "name":"Sleep Like the Dead",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/sleep_like_the_dead.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["yanqing","jing_yuan"]
+        },
+        {
+            "id":"i_shall_be_my_own_sword",
+            "name":"I Shall Be My Own Sword",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/i_shall_be_my_own_sword.png",
+            "hp":52, "atk":26, "def":18,
+            "favorites": ["jingliu"]
+        },
+        {
+            "id":"brighter_than_the_sun",
+            "name":"Brighter Than the Sun",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/brighter_than_the_sun.png",
+            "hp":48, "atk":28, "def":18,
+            "favorites": ["dan_heng_imbibitor_lunae"]
+        },
+        {
+            "id":"worrisome_blissful",
+            "name":"Worrisome, Blissful",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/worrisome_blissful.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["topaz"]
+        },
+        {
+            "id":"night_of_fright",
+            "name":"Night of Fright",
+            "rarity":5,
+            "path":"Abundance",
+            "image":"data/images/light-cones/night_of_fright.png",
+            "hp":52, "atk":21, "def":24,
+            "favorites": ["huohuo"]
+        },
+        {
+            "id":"an_instant_before_a_gaze",
+            "name":"An Instant Before A Gaze",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/an_instant_before_a_gaze.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["argenti"]
+        },
+        {
+            "id":"past_self_in_mirror",
+            "name":"Past Self in Mirror",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/past_self_in_mirror.png",
+            "hp":48, "atk":24, "def":24,
+            "favorites": ["ruan_mei"]
+        },
+        {
+            "id":"baptism_of_pure_thought",
+            "name":"Baptism of Pure Thought",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/baptism_of_pure_thought.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["dr_ratio"]
+        },
+        {
+            "id":"earthly_escapade",
+            "name":"Earthly Escapade",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/earthly_escapade.png",
+            "hp":52, "atk":24, "def":21,
+            "favorites": ["sparkle"]
+        },
+        {
+            "id":"reforged_remembrance",
+            "name":"Reforged Remembrance",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/reforged_remembrance.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["black_swan"]
+        },
+        {
+            "id":"inherently_unjust_destiny",
+            "name":"Inherently Unjust Destiny",
+            "rarity":5,
+            "path":"Preservation",
+            "image":"data/images/light-cones/inherently_unjust_destiny.png",
+            "hp":48, "atk":19, "def":30,
+            "favorites": ["aventurine"]
+        },
+        {
+            "id":"along_the_passing_shore",
+            "name":"Along the Passing Shore",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/along_the_passing_shore.png",
+            "hp":48, "atk":28, "def":18,
+            "favorites": ["acheron"]
+        },
+        {
+            "id":"whereabouts_should_dreams_rest",
+            "name":"Whereabouts Should Dreams Rest",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/whereabouts_should_dreams_rest.png",
+            "hp":52, "atk":21, "def":24,
+            "favorites": ["firefly"]
+        },
+        {
+            "id":"flowing_nightglow",
+            "name":"Flowing Nightglow",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/flowing_nightglow.png",
+            "hp":43, "atk":28, "def":21,
+            "favorites": ["robin"]
+        },
+        {
+            "id":"sailing_towards_a_second_life",
+            "name":"Sailing Towards a Second Life",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/sailing_towards_a_second_life.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["boothill"]
+        },
+        {
+            "id":"yet_hope_is_priceless",
+            "name":"Yet Hope Is Priceless",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/yet_hope_is_priceless.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["jade"]
+        },
+        {
+            "id":"those_many_springs",
+            "name":"Those Many Springs",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/those_many_springs.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["jiaoqiu"]
+        },
+        {
+            "id":"dance_at_sunset",
+            "name":"Dance at Sunset",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/dance_at_sunset.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["yunli"]
+        },
+        {
+            "id":"i_venture_forth_to_hunt",
+            "name":"I Venture Forth to Hunt",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/i_venture_forth_to_hunt.png",
+            "hp":43, "atk":28, "def":21,
+            "favorites": ["feixiao"]
+        },
+        {
+            "id":"scent_alone_stays_true",
+            "name":"Scent Alone Stays True",
+            "rarity":5,
+            "path":"Abundance",
+            "image":"data/images/light-cones/scent_alone_stays_true.png",
+            "hp":48, "atk":24, "def":24,
+            "favorites": ["lingsha"]
+        },
+        {
+            "id":"ninjutsu_inscription_dazzling_evilbreaker",
+            "name":"Ninjutsu Inscription: Dazzling Evilbreaker",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/ninjutsu_inscription_dazzling_evilbreaker.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["rappa"]
+        },
+        {
+            "id":"a_grounded_ascent",
+            "name":"A Grounded Ascent",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/a_grounded_ascent.png",
+            "hp":52, "atk":21, "def":24,
+            "favorites": ["sunday"]
+        },
+        {
+            "id":"long_road_leads_home",
+            "name":"Long Road Leads Home",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/long_road_leads_home.png",
+            "hp":43, "atk":21, "def":30,
+            "favorites": ["fugue"]
+        },
+        {
+            "id":"time_woven_into_gold",
+            "name":"Time Woven Into Gold",
+            "rarity":5,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/time_woven_into_gold.png",
+            "hp":48, "atk":28, "def":18,
+            "favorites": ["aglaea"]
+        },
+        {
+            "id":"into_the_unreachable_veil",
+            "name":"Into the Unreachable Veil",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/into_the_unreachable_veil.png",
+            "hp":43, "atk":28, "def":21,
+            "favorites": ["the_herta"]
+        },
+        {
+            "id":"if_time_were_a_flower",
+            "name":"If Time Were a Flower",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/if_time_were_a_flower.png",
+            "hp":57, "atk":24, "def":18,
+            "favorites": ["tribbie"]
+        },
+        {
+            "id":"flame_of_blood_blaze_my_path",
+            "name":"Flame of Blood, Blaze My Path",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/flame_of_blood_blaze_my_path.png",
+            "hp":62, "atk":21, "def":18,
+            "favorites": ["mydei"]
+        },
+        {
+            "id":"make_farewells_more_beautiful",
+            "name":"Make Farewells More Beautiful",
+            "rarity":5,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/make_farewells_more_beautiful.png",
+            "hp":62, "atk":21, "def":18,
+            "favorites": ["castorice"]
+        },
+        {
+            "id":"life_should_be_cast_to_flames",
+            "name":"Life Should Be Cast to Flames",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/life_should_be_cast_to_flames.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["anaxa"]
+        },
+        {
+            "id":"long_may_rainbows_adorn_the_sky",
+            "name":"Long May Rainbows Adorn the Sky",
+            "rarity":5,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/long_may_rainbows_adorn_the_sky.png",
+            "hp":52, "atk":21, "def":24,
+            "favorites": ["hyacine"]
+        },
+        {
+            "id":"lies_dance_on_the_breeze",
+            "name":"Lies Dance on the Breeze",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/lies_dance_on_the_breeze.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["cipher"]
+        },
+        {
+            "id":"thus_burns_the_dawn",
+            "name":"Thus Burns the Dawn",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/thus_burns_the_dawn.png",
+            "hp":43, "atk":31, "def":18,
+            "favorites": ["phainon"]
+        },
+        {
+            "id":"a_thankless_coronation",
+            "name":"A Thankless Coronation",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/a_thankless_coronation.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["saber"]
+        },
+        {
+            "id":"the_hell_where_ideals_burn",
+            "name":"The Hell Where Ideals Burn",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/the_hell_where_ideals_burn.png",
+            "hp":43, "atk":26, "def":24,
+            "favorites": ["archer"]
+        },
+        {
+            "id":"why_does_the_ocean_sing",
+            "name":"Why Does the Ocean Sing",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/why_does_the_ocean_sing.png",
+            "hp":43, "atk":28, "def":21,
+            "favorites": ["hysilens"]
+        },
+        {
+            "id":"epoch_etched_in_golden_blood",
+            "name":"Epoch Etched in Golden Blood",
+            "rarity":5,
+            "path":"Harmony",
+            "image":"data/images/light-cones/epoch_etched_in_golden_blood.png",
+            "hp":43, "atk":28, "def":21,
+            "favorites": ["cerydra"]
+        },
+        {
+            "id":"to_evernights_stars",
+            "name":"To Evernight's Stars",
+            "rarity":5,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/to_evernights_stars.png",
+            "hp":52, "atk":24, "def":21,
+            "favorites": ["evernight"]
+        },
+        {
+            "id":"though_worlds_apart",
+            "name":"Though Worlds Apart",
+            "rarity":5,
+            "path":"Preservation",
+            "image":"data/images/light-cones/though_worlds_apart.png",
+            "hp":48, "atk":26, "def":21,
+            "favorites": ["dan_heng_permansor_terrae"]
+        },
+        {
+            "id":"on_the_fall_of_an_aeon",
+            "name":"On the Fall of an Aeon",
+            "rarity":5,
+            "path":"Destruction",
+            "image":"data/images/light-cones/on_the_fall_of_an_aeon.png",
+            "hp":48, "atk":24, "def":18
+        },
+        {
+            "id":"cruising_in_the_stellar_sea",
+            "name":"Cruising in the Stellar Sea",
+            "rarity":5,
+            "path":"Hunt",
+            "image":"data/images/light-cones/cruising_in_the_stellar_sea.png",
+            "hp":43, "atk":24, "def":21
+        },
+        {
+            "id":"texture_of_memories",
+            "name":"Texture of Memories",
+            "rarity":5,
+            "path":"Preservation",
+            "image":"data/images/light-cones/texture_of_memories.png",
+            "hp":48, "atk":19, "def":24
+        },
+        {
+            "id":"solitary_healing",
+            "name":"Solitary Healing",
+            "rarity":5,
+            "path":"Nihility",
+            "image":"data/images/light-cones/solitary_healing.png",
+            "hp":48, "atk":24, "def":18
+        },
+        {
+            "id":"eternal_calculus",
+            "name":"Eternal Calculus",
+            "rarity":5,
+            "path":"Erudition",
+            "image":"data/images/light-cones/eternal_calculus.png",
+            "hp":48, "atk":24, "def":18
+        },
+        {
+            "id":"memorys_curtain_never_falls",
+            "name":"Memory's Curtain Never Falls",
+            "rarity":5,
+            "path":"Remembrance",
+            "image":"data/images/light-cones/memorys_curtain_never_falls.png",
+            "hp":48, "atk":24, "def":18
         }
     ]
 }

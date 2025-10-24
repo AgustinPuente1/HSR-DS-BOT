@@ -5,7 +5,7 @@ from sqlalchemy import select, desc
 from ..db.session import SessionLocal
 from ..db.models import Player, PullHistory
 from ..services.data_loader import load_data
-from ..util.history_pager import HistoryPager
+from ..util.pager import Pager
 from ..util.embeds import make_history_embed
 
 # Para resolver nombres sin acoplar a GS
@@ -72,7 +72,7 @@ class HistoryCog(commands.Cog):
             for idx, pi in enumerate(pages_items)
         ]
 
-        view = HistoryPager(user_id=str(interaction.user.id), embeds=embeds)
+        view = Pager(user_id=str(interaction.user.id), embeds=embeds)
         await interaction.response.send_message(embed=embeds[0], view=view, ephemeral=True)
 
 async def setup(bot): 
